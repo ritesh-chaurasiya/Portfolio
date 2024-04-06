@@ -1,0 +1,165 @@
+body {
+  background: #9CFFD8;
+}
+
+.container {
+  margin: auto auto auto auto;
+  padding: auto auto auto auto;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+#clock {
+  margin: auto;
+  padding: auto;
+  height: 72vw;
+  width: 72vw;
+  background-image: radial-gradient(#00E5FF 42%, #D9FFDD 42%, #D9FFDD 56%, #000000 56%, #000000 56.2%, #D9FFDD 56.2%);
+  border: 9px solid #000000;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow:
+  0px 0px 60px 2px black,
+  2px 0px 6px 2px #FF6DD4,
+  0px 2px 6px 2px #FF6DD4,
+  -2px 0px 6px 2px #FF6DD4,
+  0px -2px 6px 2px #FF6DD4;
+  align-items: center;
+  box-sizing: padding-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#centre {
+  height: 3vw;
+  width: 3vw;
+  background: #9602FF;
+  border: 4px solid black;
+  border-radius: 50%;
+}
+
+#centre2 {
+  height: 3vw;
+  width: 3vw;
+  background: #9602FF;
+  border: 0px solid black;
+  border-radius: 50%;
+  position: absolute;
+  left: 48%;
+  z-index: 4;
+}
+
+#indicator-top {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0.9%;
+  left: 47.86%;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 12px solid #cc33ff;
+}
+
+#indicator-right {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 49%;
+  right: 0.9%;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-right: 12px solid #cc33ff;
+}
+
+#indicator-bottom {
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: 0.9%;
+  left: 47.86%;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 12px solid #cc33ff;
+}
+
+#indicator-left {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 48.9%;
+  left: 0.9%;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  border-left: 12px solid #cc33ff;
+}
+
+#hour {
+  height: 22vw;
+  width: 2vw;
+  background: navy;
+  position: absolute;
+  left: 48.69%;
+  top: 20.22%;
+  border-radius: 99% 99% 50% 50%;
+  z-index: 1;
+  transform-origin: bottom;
+  animation: hour 43200s linear infinite;
+}
+
+#minute {
+  height: 30vw;
+  width: 1.6vw;
+  background: navy;
+  position: absolute;
+  left: 48.86%;
+  top: 9.34%;
+  border-radius: 99% 99% 50% 50%;
+  z-index: 2;
+  transform-origin: bottom;
+  animation: minute 3600s linear infinite;
+}
+
+#second {
+  height: 34.6vw;
+  width: 1.2vw;
+  background: #9602FF;
+  position: absolute;
+  left: 49.19%;
+  top: 2.92%;
+  border-radius: 99% 99% 50% 50%;
+  z-index: 3;
+  transform-origin: bottom;
+  animation: second 60s linear infinite;
+}
+/*
+@keyframes hour {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes minute {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes second {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+*/
