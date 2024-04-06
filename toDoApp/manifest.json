@@ -18,7 +18,7 @@
   "background_color" : "rgb(144, 238, 144)",
   "orientation" : "portrait",
   "display" : "standalone",
-  "scope" : "",
+  "scope" : "https://ritesh-chaurasiya.netlify.app",
   "theme_color" : "rgb(144, 238, 144)",
   "shortcuts" : [
     {
