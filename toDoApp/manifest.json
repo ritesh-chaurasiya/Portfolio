@@ -1,0 +1,47 @@
+{
+  "short_name" : "TO-DO App",
+  "name" : "TO-DO & Notes App",
+  "icons" : [
+    {
+      "src" : "android-chrome-192x192.png",
+      "sizes" : "192x192",
+      "type" : "image/png"
+    },
+    {
+      "src" : "android-chrome-512x512.png",
+      "sizes" : "512x512",
+      "type" : "image/png"
+    }
+  ],
+  "id" : "",
+  "start_url" : "",
+  "background_color" : "rgb(144, 238, 144)",
+  "orientation" : "portrait",
+  "display" : "standalone",
+  "scope" : "",
+  "theme_color" : "rgb(144, 238, 144)",
+  "shortcuts" : [
+    {
+      "name": "Create New Task",
+      "short_name": "New Task",
+      "description": "Create New Task",
+      "url": "/toDo?source=pwa",
+      "icons": [{ "src": "toDo.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "View Done Task",
+      "short_name": "View Done Task",
+      "description": "View Done Task",
+      "url": "/done?source=pwa",
+      "icons": [{ "src": "done.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Create New Note",
+      "short_name": "New Note",
+      "description": "Create New Note",
+      "url": "/notes?source=pwa",
+      "icons": [{ "src": "notes.png", "sizes": "192x192" }]
+    }
+  ],
+  "description": "To-Do and Notes App"
+}
