@@ -32,14 +32,14 @@
       "name": "View Done Task",
       "short_name": "View Done Task",
       "description": "View Done Task",
-      "url": "/done?source=pwa",
+      "url": "/todoapp/todoapp#done",
       "icons": [{ "src": "done.png", "sizes": "192x192" }]
     },
     {
       "name": "Create New Note",
       "short_name": "New Note",
       "description": "Create New Note",
-      "url": "/notes?source=pwa",
+      "url": "/todoapp/todoapp#notes",
       "icons": [{ "src": "notes.png", "sizes": "192x192" }]
     }
   ],
