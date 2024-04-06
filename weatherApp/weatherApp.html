@@ -1,0 +1,4031 @@
+<!-- ========================
+Simple Weather App HTML Code starts here.
+========================  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Simple Weather App - Shows the current and forecast weather details of a desired city.">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="manifest.json" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script defer src="app.js"></script>
+  <title>Simple Weather App</title>
+</head>
+
+<body>
+  <div id="background">
+  </div>
+
+  <header>
+    <h1 id="header">
+      Simple Weather App
+    </h1>
+  </header>
+
+  <main>
+
+    <nav>
+      <div id="tabHl"></div>
+      <a href="#today" id="todayTab" class="tab">
+        Today
+      </a>
+      <a href="#tomorrow" id="tomorrowTab" class="tab">
+        Tomorrow
+      </a>
+      <a href="#forecast" id="forecastTab" class="tab">
+        Forecast
+      </a>
+      <a href="#settings" id="settingsTab" class="tab">
+        Settings
+      </a>
+    </nav>
+
+    <div id="" class="locationBox floatingBox">
+      <h3>Get Current City</h3>
+      <button class="cancelBtn" title="Cancel" type="button">
+        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100.000000pt" height="100.000000pt"
+          viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet" fill="#000000">
+          <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+            <path
+              d="M150 845 l-24 -26 159 -159 160 -160 -160 -160 -160 -160 28 -27 27 -28 160 160 160 160 160 -160 160 -160 27 28 28 27 -160 160 -160 160 160 160 160 160 -28 27 -27 28 -160 -160 -160 -160 -158 158 c-86 86 -160 157 -163 157 -3 0 -16 -11 -29 -25z" />
+          </g>
+        </svg>
+      </button>
+      <div class="locationOption">
+        <div class="notification card">
+          <p class="notificationMessage">
+            Test notification.
+          </p>
+        </div>
+        <!-- Search by City Name -->
+        <div id="" class="">
+          <h4>Search by City Name</h4>
+          <br>
+          <!-- <p>Please use this Search Box to get the weather of desired city.</p> -->
+          <input class="inputBox" type="search" name="fetchCityName" id="fetchCityName" placeholder="Enter City Name" />
+          <div class="floatingBoxButtonBox">
+            <button id="fetchCity" class="actionBtn" title="Get City" type="button">Get City</button>
+          </div>
+        </div>
+        <hr>
+        <!-- Search by Current Location -->
+        <div id="" class="">
+          <h4>Search by Current Location</h4>
+          <svg width="50px" height="50px" viewBox="-4.8 -4.8 57.60 57.60" xmlns="http://www.w3.org/2000/svg"
+            fill="#000000" stroke="#000000" stroke-width="0.00048000000000000007"
+            transform="matrix(-1, 0, 0, -1, 0, 0)rotate(0)">
+            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC"
+              stroke-width="0.192" />
+            <g id="Layer_2" data-name="Layer 2" />
+            <g id="invisible_box" data-name="invisible box" />
+            <rect width="48" height="48" fill="none" />
+            <g id="icons_Q2" data-name="icons Q2" />
+            <g>
+              <path
+                d="M44,22H39.9A16.1,16.1,0,0,0,26,8.1h0V4a2,2,0,0,0-4,0V8h0A16.1,16.1,0,0,0,8.1,22H4a2,2,0,0,0,0,4H8.1A16.1,16.1,0,0,0,22,39.9h0v4a2,2,0,0,0,4,0V40h0A16.1,16.1,0,0,0,39.9,26H44a2,2,0,0,0,0-4ZM24,36A12,12,0,1,1,36,24,12,12,0,0,1,24,36Z" />
+              <circle cx="24" cy="24" r="7" />
+            </g>
+          </svg>
+          <div class="floatingBoxButtonBox">
+            <button id="fetchLocation" class="actionBtn" title="Get Current Location"
+              type="button">Get Current Location</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="today" class="tabPage">
+      <div class="tabHeader">
+        <div class="tabTitleContainer">
+          <h2 class="tabTitle">-</h2>
+        </div>
+        <button class="locationBtn" title="Location" type="button">
+          <svg width="100pt" height="100pt" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <path fill-rule="evenodd"
+              d="M14.78 1.22a.75.75 0 01.148.851l-5.921 12.5a.75.75 0 01-1.406-.14L6.395 9.606 1.568 8.4a.75.75 0 01-.14-1.406l12.5-5.92a.75.75 0 01.852.147zM3.965 7.452l3.23.807a.75.75 0 01.546.546l.807 3.23 4.125-8.708-8.708 4.125z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+        <button class="refreshBtn" title="Refresh" type="button">
+          <svg width="100pt" height="100pt" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="#000000">
+            <path
+              d="M4.06189 13C4.02104 12.6724 4 12.3387 4 12C4 7.58172 7.58172 4 12 4C14.5006 4 16.7332 5.14727 18.2002 6.94416M19.9381 11C19.979 11.3276 20 11.6613 20 12C20 16.4183 16.4183 20 12 20C9.61061 20 7.46589 18.9525 6 17.2916M9 17H6V17.2916M18.2002 4V6.94416M18.2002 6.94416V6.99993L15.2002 7M6 20V17.2916"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+      <div class="tabContent">
+        <div class="timeNDate card">
+          <div class="timeDiv">
+            <span class="timeSpan hour">-</span>
+            <span class="timeSpan colon">:</span>
+            <span class="timeSpan minute">-</span>
+            <span class="timeSpan colon">:</span>
+            <span class="timeSpan second">-</span>
+          </div>
+          <hr>
+          <div class="dateDiv">
+            <span class="dateSpan day">-</span>
+            <span class="dateSpan">,</span>
+            <span class="dateSpan date">-</span>
+            <span class="dateSpan month">-</span>
+            <span class="dateSpan">,</span>
+            <span class="dateSpan year">-</span>
+            <!-- <span class="dateSpan day" id="day"></span>
+            <span class="dateSpan">,</span>
+            <span class="dateSpan date" id="date"></span>
+            <span class="dateSpan month" id="month"></span>
+            <span class="dateSpan">,</span>
+            <span class="dateSpan year" id="year"></span> -->
+          </div>
+        </div>
+        <div class="notification card">
+          <p class="notificationMessage">
+            -
+          </p>
+        </div>
+        <!-- currentWeather -->
+        <div class="card">
+          <div>
+            <div class="basicTempDetailsTile">
+              <div class="currentTempDetails">
+                <div class="currentTempbox">
+                  <span class="crtTempValue">-</span>
+                  <span class="ctunit">&deg;C</span>
+                </div>
+              </div>
+              <div class="dayTempDetails">
+                <div>
+                  <span>Max</span>
+                  <span class="maxTempValue">-</span>
+                  <span>&deg;C</span>
+                </div>
+                <div>
+                  <span>Feels Like</span>
+                  <span class="crtFlTempValue">-</span>
+                  <span>&deg;C</span>
+                </div>
+                <div>
+                  <span>Min</span>
+                  <span class="minTempValue">-</span>
+                  <span>&deg;C</span>
+                </div>
+              </div>
+            </div>
+            <div class="basicIconDetailsTile">
+              <div class="weatherIconTile">
+                <img class="crtWeatherIcon weatherIcon" src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Weather Icon" />
+                <p class="crtWeatherIconDesc weatherIconDesc">-</p>
+              </div>
+              <div class="windIconTile">
+                <svg class="crtWeatherWindIcon windIcon" width="50" height="50" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+                <div class="windIconDesc">
+                  <span class="crtWeatherWindSpeed">-</span>
+                  <span class="crtWeatherWindDirection">-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="addDetails">
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Precipitation
+              </p>
+              <p class="crtPrecpValue adtvalue">
+                - mm
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Humidity
+              </p>
+              <p class="crtHmdtValue adtvalue">
+                - %
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Dew point
+              </p>
+              <p class="crtDewPValue adtvalue">
+                - &deg;C
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Pressure
+              </p>
+              <p class="crtPresrValue adtvalue">
+                - mBar
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                AQI
+              </p>
+              <p class="crtAQIValue adtvalue">
+                -
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                UV Index
+              </p>
+              <p class="crtUVValue adtvalue">
+                -
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Visibility
+              </p>
+              <p class="crtVisibValue adtvalue">
+                - Km
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Clouds
+              </p>
+              <p class="crtCldCvrValue adtvalue">
+                - %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="hourlyWeather card">
+          <table>
+            <tr>
+              <td colspan="24">
+                <svg class="hourlyTemperatureGraph">
+                  <text class="hourlyTemperatureValue" x="45.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="157.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="268.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="380.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="491.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="603.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="714.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="826.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="937.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="1049.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="1160.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="1272.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="1383.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="1495.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="1606.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="1718.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="1829.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="1941.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="2052.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="2164.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="2275.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="2387.25" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="2498.75" y="0"></text>
+                  <text class="hourlyTemperatureValue" x="2610.25" y="0"></text>
+                  <linearGradient id="tempGraphBackground-summer" gradientTransform="rotate(90)">
+                    <stop offset="5%" stop-color="rgba(195, 78, 87, 0.5)" />
+                    <stop offset="30%" stop-color="rgba(225, 78, 87, 1)" />
+                    <stop offset="65%" stop-color="yellow" />
+                    <stop offset="80%" stop-color="skyblue" />
+                    <stop offset="90%" stop-color="skyblue" />
+                    <stop offset="100%" stop-color="rgba(160, 224, 250, 0.2)" />
+                  </linearGradient>
+                  <linearGradient id="tempGraphBackground-winter" gradientTransform="rotate(90)">
+                    <stop offset="20%" stop-color="rgba(255, 255, 0, 0.2)" />
+                    <stop offset="34%" stop-color="yellow" />
+                    <stop offset="42%" stop-color="yellow" />
+                    <stop offset="56%" stop-color="skyblue" />
+                    <stop offset="75%" stop-color="skyblue" />
+                    <stop offset="100%" stop-color="rgba(160, 224, 250, 0.2)" />
+                    <stop offset="100%" stop-color="transparent" />
+                  </linearGradient>
+                  <polygon class="hourlyTemperaturePoints" fill="url(#tempGraphBackground-summer)"
+                    points="0 0" />
+                  Sorry, your browser does not support inline SVG.
+                </svg>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">00:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">01:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">02:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">03:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">04:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">05:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">06:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">07:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">08:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">09:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">10:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">11:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">12:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">13:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">14:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">15:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">16:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">17:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">18:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">19:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">20:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">21:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">22:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn hourlyWeatherTime">
+                <span class="hourlyWeatherTimeValue">23:00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon" src="" alt="">
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription">-</span>
+              </td>
+            </tr>
+            <tr>
+              <th class="hourlyWeatherTableHeading">Wind</th>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc">-</span>
+              </td>
+            </tr>
+            <tr>
+              <th class="hourlyWeatherTableHeading">Feels Like</th>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp">-</span>
+              </td>
+            </tr>
+            <tr>
+              <th class="hourlyWeatherTableHeading">Clouds</th>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover">-</span>
+              </td>
+            </tr>
+            <tr>
+              <th class="hourlyWeatherTableHeading">Precipitation</th>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen">-</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume">-</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- dayNightTimingDetails -->
+        <div class="card">
+          <div class="sunriseNset">
+            <div class="sunriseNsetField">
+              <p>Sunrise</p>
+              <p>Sunset</p>
+            </div>
+            <div class="sunriseNsetValue">
+              <p>
+                <span class="todaySunriseValue">- : -</span>
+                <!-- <span>AM</span> -->
+              </p>
+              <p>
+                <span class="todaySunsetValue">- : -</span>
+                <!-- <span>PM</span> -->
+              </p>
+            </div>
+          </div>
+          <div class="progressBarContainer-H">
+            <div class="marker markerStart">
+              <span>00 : 00</span>
+              <span>0 %</span>
+            </div>
+            <div class="marker markerSunrise">
+              <span class="todaySunriseValue">- : -</span>
+              <span>Sunrise</span>
+            </div>
+            <div class="marker markerNoon">
+              <span>12 : 00</span>
+              <span>Noon</span>
+            </div>
+            <div class="marker markerSunset">
+              <span class="todaySunsetValue">- : -</span>
+              <span>Sunset</span>
+            </div>
+            <div class="marker markerEnd">
+              <span>24 : 00</span>
+              <span>100 %</span>
+            </div>
+            <div class="progressBar">
+              <div class="progressIndicator">
+                <div class="progressTime">
+                  <span class="hour"></span>
+                  <span class="colon">:</span>
+                  <span class="minute"></span>
+                  <span class="colon">:</span>
+                  <span class="second"></span>
+                </div>
+                <div class="progressPercent">
+                  <span class="progressPercentValue"></span>
+                  <span class="colon">%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="progressBarContainer-C">
+            <div class="progressBarCir">
+              <div class="progressIndicatorCir">
+                <svg class="progressIndicatorCirSvg" height="240" width="240">
+                  <circle class="progressIndicatorCirSvgBar" cx="120" cy="120" r="110" stroke-linecap="round" />
+                </svg>
+                <div class="progressData">
+                  <div class="progressTimeCir">
+                    <span class="hour"></span>
+                    <span class="colon">:</span>
+                    <span class="minute"></span>
+                    <span class="colon">:</span>
+                    <span class="second"></span>
+                  </div>
+                  <div class="progressPercentCir">
+                    <span class="progressPercentValue"></span>
+                    <span class="colon">%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dayLengthInfo">
+            <div class="dayLengthInfoField">
+              <p>Total Light Time</p>
+              <p class="">Remaining Light Time</p>
+            </div>
+            <div class="dayLengthInfoValue">
+              <p>
+                <span class="todayTotalDayHours">-</span>
+                <span>h</span>
+                <span class="todayTotalDayMins">-</span>
+                <span>m</span>
+              </p>
+              <p class="">
+                <span class="todayRemainDayHours">-</span>
+                <span>h</span>
+                <span class="todayRemainDayMins">-</span>
+                <span>m</span>
+              </p>
+            </div>
+          </div>
+          <div class="nightLengthInfo">
+            <div class="nightLengthInfoField">
+              <p>Total Dark Time</p>
+              <p class="">Remaining Dark Time</p>
+            </div>
+            <div class="nightLengthInfoValue">
+              <p>
+                <span class="todayTotalNightHours">-</span>
+                <span>h</span>
+                <span class="todayTotalNightMins">-</span>
+                <span>m</span>
+              </p>
+              <p class="">
+                <span class="todayRemainNightHours">-</span>
+                <span>h</span>
+                <span class="todayRemainNightMins">-</span>
+                <span>m</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loadingPage">
+        <div class="loaderAnimation">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+        </div>
+        <div class="loaderText">
+          <span>L</span>
+          <span>o</span>
+          <span>a</span>
+          <span>d</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="tomorrow" class="tabPage">
+      <div class="tabHeader">
+        <div class="tabTitleContainer">
+          <h2 class="tabTitle">-</h2>
+        </div>
+        <button class="locationBtn" title="Location" type="button">
+          <svg width="100pt" height="100pt" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <path fill-rule="evenodd"
+              d="M14.78 1.22a.75.75 0 01.148.851l-5.921 12.5a.75.75 0 01-1.406-.14L6.395 9.606 1.568 8.4a.75.75 0 01-.14-1.406l12.5-5.92a.75.75 0 01.852.147zM3.965 7.452l3.23.807a.75.75 0 01.546.546l.807 3.23 4.125-8.708-8.708 4.125z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+        <button class="refreshBtn" title="Refresh" type="button">
+          <svg width="100pt" height="100pt" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="#000000">
+            <path
+              d="M4.06189 13C4.02104 12.6724 4 12.3387 4 12C4 7.58172 7.58172 4 12 4C14.5006 4 16.7332 5.14727 18.2002 6.94416M19.9381 11C19.979 11.3276 20 11.6613 20 12C20 16.4183 16.4183 20 12 20C9.61061 20 7.46589 18.9525 6 17.2916M9 17H6V17.2916M18.2002 4V6.94416M18.2002 6.94416V6.99993L15.2002 7M6 20V17.2916"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+      <div class="tabContent">
+        <div class="timeNDate card">
+          <div class="dateDiv">
+            <span class="dateSpan tmwDay">-</span>
+            <span class="dateSpan">,</span>
+            <span class="dateSpan tmwDate">-</span>
+            <span class="dateSpan tmwMonth">-</span>
+            <span class="dateSpan">,</span>
+            <span class="dateSpan tmwYear">-</span>
+          </div>
+        </div>
+        <!-- Tomorrow Average Weather -->
+        <div class="card">
+          <div>
+            <div class="basicTempDetailsTile">
+              <div class="maxTempTmw">
+                <span>Max</span>
+                <span class="tmwMaxTempValue">-</span>
+                <span>&deg;C</span>
+              </div>
+              <div class="minTempTmw">
+                <span>Min</span>
+                <span class="tmwMinTempValue">-</span>
+                <span>&deg;C</span>
+              </div>
+            </div>
+            <div class="basicIconDetailsTile">
+              <div class="weatherIconTile">
+                <img class="tmwWeatherIcon weatherIcon" src="https://cdn.weatherapi.com/weather/64x64/day/113.png" alt="Weather Icon" />
+                <p class="tmwWeatherIconDesc weatherIconDesc">-</p>
+              </div>
+              <div class="windIconTile">
+                <svg class="tmwWeatherWindIcon windIcon" width="50" height="50" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+                <div class="windIconDesc">
+                  <span class="tmwWeatherWindSpeed">-</span>
+                  <span class="tmwWeatherWindDirection">-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="tmwaddDetails addDetails">
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Precipitation
+              </p>
+              <p class="tmwPrecpValue adtvalue">
+                - mm
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Humidity
+              </p>
+              <p class="tmwHmdtValue adtvalue">
+                - %
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Pressure
+              </p>
+              <p class="tmwPresrValue adtvalue">
+                - mBar
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                UV Index
+              </p>
+              <p class="tmwUVValue adtvalue">
+                -
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Visibility
+              </p>
+              <p class="tmwVisibValue adtvalue">
+                - Km
+              </p>
+            </div>
+            <div class="addDetailsTile">
+              <p class="adtfield">
+                Clouds
+              </p>
+              <p class="tmwCldCvrValue adtvalue">
+                - %
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="hourlyWeather card">
+          <table>
+            <tr>
+              <td colspan="24">
+                <svg class="hourlyTemperatureGraph">
+                  <text class="tmwHourlyTemperatureValue" x="45.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="157.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="268.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="380.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="491.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="603.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="714.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="826.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="937.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="1049.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="1160.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="1272.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="1383.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="1495.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="1606.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="1718.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="1829.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="1941.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="2052.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="2164.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="2275.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="2387.25" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="2498.75" y="0"></text>
+                  <text class="tmwHourlyTemperatureValue" x="2610.25" y="0"></text>
+                  <linearGradient id="tmwTempGraphBackground-summer" gradientTransform="rotate(90)">
+                    <stop offset="5%" stop-color="rgba(195, 78, 87, 0.5)" />
+                    <stop offset="30%" stop-color="rgba(225, 78, 87, 1)" />
+                    <stop offset="65%" stop-color="yellow" />
+                    <stop offset="80%" stop-color="skyblue" />
+                    <stop offset="90%" stop-color="skyblue" />
+                    <stop offset="100%" stop-color="rgba(160, 224, 250, 0.2)" />
+                  </linearGradient>
+                  <linearGradient id="tmwTempGraphBackground-winter" gradientTransform="rotate(90)">
+                    <stop offset="20%" stop-color="rgba(255, 255, 0, 0.2)" />
+                    <stop offset="34%" stop-color="yellow" />
+                    <stop offset="42%" stop-color="yellow" />
+                    <stop offset="56%" stop-color="skyblue" />
+                    <stop offset="75%" stop-color="skyblue" />
+                    <stop offset="100%" stop-color="rgba(160, 224, 250, 0.2)" />
+                    <stop offset="100%" stop-color="transparent" />
+                  </linearGradient>
+                  <polygon class="tmwHourlyTemperaturePoints" fill="url(#tmwTempGraphBackground-summer)"
+                    points="0 0" />
+                  Sorry, your browser does not support inline SVG.
+                </svg>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">00:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">01:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">02:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">03:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">04:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">05:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">06:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">07:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">08:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">09:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">10:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">11:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">12:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">13:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">14:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">15:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">16:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">17:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">18:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">19:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">20:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">21:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">22:00</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherTime">23:00</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <img class="hourlyWeatherIcon tmwHourlyWeatherIcon" src="" alt="">
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherDescription tmwHourlyWeatherDescription">-</span>
+              </td>
+            </tr>
+            <tr>
+              <th class="hourlyWeatherTableHeading">Wind</th>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <svg class="hourlyWeatherWindIcon tmwHourlyWeatherWindIcon" width="25" height="25" viewBox="0 0 10 14">
+                  <path d="M5 0L9.66895 14L5 9.33105L0.331055 14L5 0Z" fill="black" />
+                </svg>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherWindDesc tmwHourlyWeatherWindDesc">-</span>
+              </td>
+            </tr>
+            <tr>
+              <th class="hourlyWeatherTableHeading">Feels Like</th>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherFlTemp tmwHourlyWeatherFlTemp">-</span>
+              </td>
+            </tr>
+            <tr>
+              <th class="hourlyWeatherTableHeading">Clouds</th>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherCloudCover tmwHourlyWeatherCloudCover">-</span>
+              </td>
+            </tr>
+            <tr>
+              <th class="hourlyWeatherTableHeading">Precipitation</th>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipPercen tmwHourlyWeatherPrecipPercen">-</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+              <td class="hourlyWeatherDataColumn">
+                <span class="hourlyWeatherPrecipVolume tmwHourlyWeatherPrecipVolume">-</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-- dayNightTimingDetails -->
+        <div class="card">
+          <div class="sunriseNset">
+            <div class="sunriseNsetField">
+              <p>Sunrise</p>
+              <p>Sunset</p>
+            </div>
+            <div class="sunriseNsetValue">
+              <p>
+                <span class="tmwSunriseValue">- : -</span>
+                <!-- <span>AM</span> -->
+              </p>
+              <p>
+                <span class="tmwSunsetValue">- : -</span>
+                <!-- <span>PM</span> -->
+              </p>
+            </div>
+          </div>
+          <div class="dayLengthInfo">
+            <div class="dayLengthInfoField">
+              <p>Total Day Length</p>
+              <p class="remainDayNNightLen">Remaining Day Length</p>
+            </div>
+            <div class="dayLengthInfoValue">
+              <p>
+                <span class="tmwDayHours">-</span>
+                <span>h</span>
+                <span class="tmwDayMins">-</span>
+                <span>m</span>
+              </p>
+              <p class="remainDayNNightLen">
+                <span class="tmwDayHours">-</span>
+                <span>h</span>
+                <span class="tmwDayMins">-</span>
+                <span>m</span>
+              </p>
+            </div>
+          </div>
+          <div class="nightLengthInfo">
+            <div class="nightLengthInfoField">
+              <p>Total Night Length</p>
+              <p class="remainDayNNightLen">Remaining Night Length</p>
+            </div>
+            <div class="nightLengthInfoValue">
+              <p>
+                <span class="tmwNightHours">-</span>
+                <span>h</span>
+                <span class="tmwNightMins">-</span>
+                <span>m</span>
+              </p>
+              <p class="remainDayNNightLen">
+                <span class="tmwNightHours">-</span>
+                <span>h</span>
+                <span class="tmwNightMins">-</span>
+                <span>m</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loadingPage">
+        <div class="loaderAnimation">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+        </div>
+        <div class="loaderText">
+          <span>L</span>
+          <span>o</span>
+          <span>a</span>
+          <span>d</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="forecast" class="tabPage">
+      <div class="tabHeader">
+        <div class="tabTitleContainer">
+          <h2 class="tabTitle">-</h2>
+        </div>
+        <button class="locationBtn" title="Location" type="button">
+          <svg width="100pt" height="100pt" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <path fill-rule="evenodd"
+              d="M14.78 1.22a.75.75 0 01.148.851l-5.921 12.5a.75.75 0 01-1.406-.14L6.395 9.606 1.568 8.4a.75.75 0 01-.14-1.406l12.5-5.92a.75.75 0 01.852.147zM3.965 7.452l3.23.807a.75.75 0 01.546.546l.807 3.23 4.125-8.708-8.708 4.125z"
+              clip-rule="evenodd" />
+          </svg>
+        </button>
+        <button class="refreshBtn" title="Refresh" type="button">
+          <svg width="100pt" height="100pt" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="#000000">
+            <path
+              d="M4.06189 13C4.02104 12.6724 4 12.3387 4 12C4 7.58172 7.58172 4 12 4C14.5006 4 16.7332 5.14727 18.2002 6.94416M19.9381 11C19.979 11.3276 20 11.6613 20 12C20 16.4183 16.4183 20 12 20C9.61061 20 7.46589 18.9525 6 17.2916M9 17H6V17.2916M18.2002 4V6.94416M18.2002 6.94416V6.99993L15.2002 7M6 20V17.2916"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+      <div class="tabContent">
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+                -
+                Today
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+                -
+                Tomorrow
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="f-basicDetails">
+            <div class="f-dateNDesc">
+              <div class="f-dayNDate">
+                <span class="dateSpan fDay"></span>
+                <span class="dateSpan">,</span>
+                <span class="dateSpan fDate"></span>
+                <span class="dateSpan fMonth"></span>
+              </div>
+              <p class="fWeatherDesc">-</p>
+            </div>
+            <div class="f-w-iconBox">
+              <img class="fWeatherIcon" src="" alt="" />
+            </div>
+            <div class="f-tempDetails">
+              <span class="fMaxTemp">-&deg;</span>
+              <span class="fMinTemp">-&deg;</span>
+            </div>
+          </div>
+          <div class="f-collapse">
+            <div class="f-addDetails">
+              <div class="f-adField">
+                <p>Wind</p>
+                <p>Precipitation</p>
+                <p>Clouds</p>
+                <p>Sunrise</p>
+                <p>Sunset</p>
+              </div>
+              <div class="f-adValue">
+                <p class="fWindSpeedNDirec">-</p>
+                <p class="fPrecipVolNPerc">-</p>
+                <p class="fCldCvr">-</p>
+                <p class="fSunrise">-</p>
+                <p class="fSunset">-</p>
+              </div>
+            </div>
+            <div class="f-hourlyDetails">
+              <table>
+                <tr>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                  <td class="fHourlyTemp">-</td>
+                </tr>
+                <tr>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                  <td>
+                    <img class="fHourlyWeatherIcon" src="" alt="" />
+                  </td>
+                </tr>
+                <tr>
+                  <td class="fHourlyTime">00:00</td>
+                  <td class="fHourlyTime">01:00</td>
+                  <td class="fHourlyTime">02:00</td>
+                  <td class="fHourlyTime">03:00</td>
+                  <td class="fHourlyTime">04:00</td>
+                  <td class="fHourlyTime">05:00</td>
+                  <td class="fHourlyTime">06:00</td>
+                  <td class="fHourlyTime">07:00</td>
+                  <td class="fHourlyTime">08:00</td>
+                  <td class="fHourlyTime">09:00</td>
+                  <td class="fHourlyTime">10:00</td>
+                  <td class="fHourlyTime">11:00</td>
+                  <td class="fHourlyTime">12:00</td>
+                  <td class="fHourlyTime">13:00</td>
+                  <td class="fHourlyTime">14:00</td>
+                  <td class="fHourlyTime">15:00</td>
+                  <td class="fHourlyTime">16:00</td>
+                  <td class="fHourlyTime">17:00</td>
+                  <td class="fHourlyTime">18:00</td>
+                  <td class="fHourlyTime">19:00</td>
+                  <td class="fHourlyTime">20:00</td>
+                  <td class="fHourlyTime">21:00</td>
+                  <td class="fHourlyTime">22:00</td>
+                  <td class="fHourlyTime">23:00</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="loadingPage">
+        <div class="loaderAnimation">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+          <div class="shadow"></div>
+        </div>
+        <div class="loaderText">
+          <span>L</span>
+          <span>o</span>
+          <span>a</span>
+          <span>d</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="settings" class="tabPage">
+      <div class="tabHeader settingsTabHeader">
+        <div class="tabTitleContainer">
+          <h2>Settings</h2>
+        </div>
+        <button class="refreshBtn" title="Refresh" type="button">
+          <svg width="100pt" height="100pt" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"
+            stroke="#000000">
+            <path
+              d="M4.06189 13C4.02104 12.6724 4 12.3387 4 12C4 7.58172 7.58172 4 12 4C14.5006 4 16.7332 5.14727 18.2002 6.94416M19.9381 11C19.979 11.3276 20 11.6613 20 12C20 16.4183 16.4183 20 12 20C9.61061 20 7.46589 18.9525 6 17.2916M9 17H6V17.2916M18.2002 4V6.94416M18.2002 6.94416V6.99993L15.2002 7M6 20V17.2916"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+      <div class="tabContent">
+        <div class="card">
+          <div class="s-optionDetail">
+            App Background Toggle
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+              class="bi bi-caret-right s-collapseToggleIcon" viewBox="0 0 16 16">
+              <path
+                d="M6 12.796V3.204L11.481 8zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753" />
+            </svg>
+          </div>
+          <div class="s-collapse">
+            <div id="cityMap" class="s-option">
+              City Map
+            </div>
+            <div id="liveGradient" class="s-option">
+              Live Gradient
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="s-optionDetail">
+            Day & Night Progress Bar Toggle
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+              class="bi bi-caret-right s-collapseToggleIcon" viewBox="0 0 16 16">
+              <path
+                d="M6 12.796V3.204L11.481 8zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753" />
+            </svg>
+          </div>
+          <div class="s-collapse">
+            <div id="straightBar" class="s-option">
+              Straight &raquo;
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                class="bi bi-arrow-right s-option-svg" viewBox="0 0 15 15">
+                <path fill-rule="evenodd"
+                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+              </svg>
+            </div>
+            <div id="circularBar" class="s-option">
+              Circular &raquo;
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                class="bi bi-arrow-clockwise s-option-svg" viewBox="0 0 15 15">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                <path
+                  d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+              </svg>
+            </div>
+            <div id="bothBar" class="s-option">
+              Both &raquo;
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                class="bi bi-arrow-right s-option-svg" viewBox="0 0 15 15">
+                <path fill-rule="evenodd"
+                  d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+                class="bi bi-arrow-clockwise s-option-svg" viewBox="0 0 15 15">
+                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                <path
+                  d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="s-optionDetail">
+            Delete User Data
+            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor"
+              class="bi bi-caret-right s-collapseToggleIcon" viewBox="0 0 16 16">
+              <path
+                d="M6 12.796V3.204L11.481 8zm.659.753 5.48-4.796a1 1 0 0 0 0-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 0 0 1.659.753" />
+            </svg>
+          </div>
+          <div class="s-collapse">
+            <div id="deleteUserData" class="s-option">
+              Delete All User Data &raquo;
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                  <path d="M150 845 l-24 -26 159 -159 160 -160 -160 -160 -160 -160 28 -27 27 -28 160 160 160 160 160 -160 160 -160 27 28 28 27 -160 160 -160 160 160 160 160 160 -28 27 -27 28 -160 -160 -160 -160 -158 158 c-86 86 -160 157 -163 157 -3 0 -16 -11 -29 -25z" />
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="s-optionDetail">
+            More features Coming Soon. Stay tuned!!
+          </div>
+        </div>
+        <div class="card">
+          <div class="footer">
+            Powered by 
+            <a href="https://www.weatherapi.com/" target="_blank" title="Free Weather API" style="margin:0rem 1rem">
+              <img src='https://cdn.weatherapi.com/v4/images/weatherapi_logo.png' alt="Weather data by WeatherAPI.com" border="0">
+            </a>
+          </div>
+          <div class="footer">
+            &
+          </div>
+          <div class="footer">
+            Powered by 
+            <a href="https://open-meteo.com/" target="_blank" title="Open-Meteo" style="margin:0rem 1rem;text-decoration: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="black" class="bi bi-cloud-sun me-2" viewBox="0 0 16 16">
+                <path d="M7 8a3.5 3.5 0 0 1 3.5 3.555.5.5 0 0 0 .624.492A1.503 1.503 0 0 1 13 13.5a1.5 1.5 0 0 1-1.5 1.5H3a2 2 0 1 1 .1-3.998.5.5 0 0 0 .51-.375A3.502 3.502 0 0 1 7 8zm4.473 3a4.5 4.5 0 0 0-8.72-.99A3 3 0 0 0 3 16h8.5a2.5 2.5 0 0 0 0-5h-.027z"></path>
+                <path d="M10.5 1.5a.5.5 0 0 0-1 0v1a.5.5 0 0 0 1 0v-1zm3.743 1.964a.5.5 0 1 0-.707-.707l-.708.707a.5.5 0 0 0 .708.708l.707-.708zm-7.779-.707a.5.5 0 0 0-.707.707l.707.708a.5.5 0 1 0 .708-.708l-.708-.707zm1.734 3.374a2 2 0 1 1 3.296 2.198c.199.281.372.582.516.898a3 3 0 1 0-4.84-3.225c.352.011.696.055 1.028.129zm4.484 4.074c.6.215 1.125.59 1.522 1.072a.5.5 0 0 0 .039-.742l-.707-.707a.5.5 0 0 0-.854.377zM14.5 6.5a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="footer">
+            Vanilla JS Project made by Ritesh Chaurasiya.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>
+
+<!-- ========================
+Simple Weather App HTML Code ends here.
+========================  -->
