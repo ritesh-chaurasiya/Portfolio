@@ -1,0 +1,73 @@
+{
+  "short_name" : "Weather App",
+  "name" : "Weather App",
+  "icons" : [
+    {
+      "src" : "android-chrome-192x192.png",
+      "sizes" : "192x192",
+      "type" : "image/png"
+    },
+    {
+      "src" : "android-chrome-512x512.png",
+      "sizes" : "512x512",
+      "type" : "image/png"
+    }
+  ],
+  "id" : "",
+  "start_url" : "",
+  "background_color" : "rgba(140, 255, 102, 0.2)",
+  "orientation" : "portrait",
+  "display" : "standalone",
+  "scope" : "",
+  "theme_color" : "rgba(140, 255, 102, 0.2)",
+  "shortcuts" : [
+    {
+      "name": "How's the weather today?",
+      "short_name": "Today weather",
+      "description": "View weather information for today",
+      "url": "/today?source=pwa",
+      "icons": [{ "src": "today.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "How's the weather tomorrow?",
+      "short_name": "Tomorrow weather",
+      "description": "View weather information for tomorrow",
+      "url": "/tomorrow?source=pwa",
+      "icons": [{ "src": "tomorrow.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "How's the weather this week?",
+      "short_name": "Forecast weather",
+      "description": "View weather information for this week",
+      "url": "/tomorrow?source=pwa",
+      "icons": [{ "src": "forecast.png", "sizes": "192x192" }]
+    }
+  ],
+  "description": "Time and Weather forecast information",
+  "screenshots": [
+    {
+      "src": "Today_Screenshot1_N.jpg",
+      "type": "image/jpg",
+      "sizes": "375x834",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "Today_Screenshot2_N.jpg",
+      "type": "image/jpg",
+      "sizes": "375x834",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "Today_Screenshot1_W.jpg",
+      "type": "image/jpg",
+      "sizes": "768x802",
+      "form_factor": "wide"
+    },
+    {
+      "src": "Today_Screenshot2_W.jpg",
+      "type": "image/jpg",
+      "sizes": "768x802",
+      "form_factor": "wide"
+    }
+  ]
+}
