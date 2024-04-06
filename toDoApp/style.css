@@ -1,0 +1,537 @@
+/* ========================
+To-Do App CSS Code starts here.
+======================== */
+
+
+/* Revise the color theme of whole app */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 10px;
+}  
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background-color: skyblue;
+  scroll-behavior: smooth;
+}
+
+header, main {
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0rem 0.5rem 0.5rem black;
+}
+
+header {
+  background-color: magenta;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+#header {
+  font-size: 2.4rem;
+}
+
+main {
+  background-color: lightgreen;
+  height: 92vh;
+  position: relative;
+}  
+
+nav {
+  background-color: rgb(153, 255, 0);
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  z-index: 10;
+}  
+
+nav > a {
+  text-decoration: none;
+  text-align: center;
+  margin: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+  font-weight: bold;
+  align-items: center;
+  color: black;
+  transition: transform 0.2s;
+}
+
+nav > a > svg {
+  height: 3.6rem;
+  width: 3.6rem;
+  fill: purple;
+}  
+
+section {
+  background-color: purple;
+  width: 100%;
+  height: 92%;
+  display: none;
+  position: relative;
+}
+
+.tabHeader {
+  display: grid;
+  position: relative;
+  box-shadow: 0rem 0.3rem 0.5rem black;
+  z-index: 1;
+}
+
+.tabHeader > h2 {
+  font-size: 2.6rem;
+  padding: 0.7rem 2rem;
+}
+
+.tabHeader > button {
+  margin: 0.2rem 0.6rem;
+  padding: 0.2rem 1rem;
+  background: transparent;
+  border-color: black;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 2px;
+  border-style: solid;
+}
+
+.tabHeader > button > svg {
+  height: 3.3rem;
+  width: 3.3rem;
+}
+
+.floatingBox {
+  position: absolute;
+  background: rgb(159, 45, 159);
+  max-width: 500px;
+  width: 70%;
+  z-index: 6;
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 
+  2rem 0rem 6rem 1rem rgb(50, 50, 50, 0.4), 
+  0rem 2rem 6rem 1rem rgb(50, 50, 50, 0.4), 
+  -2rem 0rem 6rem 1rem rgb(50, 50, 50, 0.4), 
+  0rem -2rem 6rem 1rem rgb(50, 50, 50, 0.4);
+  display: none;
+}
+
+
+.confirmationBox > h3 {
+  color: red;
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.confirmationBox > p {
+  color: red;
+  background: rgb(237, 154, 237);
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.tabContent {
+  padding: 1.2rem 1rem;
+  text-align: center;
+  overflow: auto;
+  display: grid;
+}
+
+.createNew {
+  width: 50%;
+  margin: 0 auto;
+  position: absolute;
+  bottom: 3.5rem;
+  left: 25%;
+  background: rgb(159, 45, 159);
+  border: none;
+  box-shadow: 0rem 0.3rem 0.5rem black;
+  z-index: 10;
+}
+
+.createNew > svg {
+  height: 4rem;
+  width: 4rem;
+}
+
+
+.createNewBox > h3, 
+.editFloatingBox > h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.createNewBox > p, 
+.editFloatingBox > p {
+  max-width: 90%;
+  max-height: 24vh;
+  overflow: auto;
+  margin: 1rem auto;
+  padding: 0.8rem 1rem;
+  border: 0.2rem solid black;
+  border-radius: 1rem;
+  background: rgb(237, 154, 237);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.createNewBox > p:focus-visible, 
+.editFloatingBox > p:focus-visible {
+  outline: solid rgb(237, 154, 237);
+}
+
+.floatingBoxButtonBox {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+}
+
+.actionBtn {
+  background: purple;
+  font-size: 1.75rem;
+  font-weight: 700;
+  border: 0rem solid purple;
+  border-radius: 1rem;
+  margin: 0.7rem 1.4rem;
+  padding: 0.7rem 4rem;
+  box-shadow: 0rem 0.3rem 0.5rem black;
+}
+
+.cancelBtn {
+  background: rgb(159, 45, 159);
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0.5rem 1rem;
+  padding: 0.6rem 2rem;
+}
+
+.noContent {
+  display: none;
+}
+
+.noContent > strong {
+  font-size: 2rem;
+}
+
+.task {
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  width: 90%;
+  margin: 0.5rem auto;
+  padding: 0.5rem;
+}
+
+.checkbox {
+  width: 100%;
+  position: relative;
+  padding-left: 4rem;
+  cursor: pointer;
+  transform: translateY(2px);
+}
+
+.checkbox > input {
+  display: none;
+}
+
+.checkmark {
+  position: absolute;
+  left: 0;
+  height: 2.2rem;
+  width: 2.2rem;
+  border: 0.2rem solid black;
+  background-color: purple;
+}
+
+.checkbox:hover .checkmark, 
+.checkbox:hover p {
+  background-color: rgb(237, 154, 237);
+}
+
+.checkbox .checkmark::after {
+  top: -0.5rem;
+  width: 1.5rem;
+  left: 0.1rem;
+  color: black;
+  content: "✓";
+  position: absolute;
+  display: none;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.checkbox input:checked ~ .checkmark {
+  background-color: indigo;
+  opacity: 0.4;
+  transform: translateY(2px);
+}
+
+.checkbox input:checked ~ p {
+  text-decoration: line-through;
+  opacity: 0.4;
+  transform: translateY(2px);
+}
+
+.checkbox input:checked ~ .checkmark:after {
+  display: block;
+  opacity: 0.4;
+}
+
+.checkbox > p {
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.option {
+  background: transparent;
+  border: none;
+  align-self: flex-start;
+  position: relative;
+}
+
+.option:hover {
+  background-color: rgb(237, 154, 237);
+}
+
+.option > svg {
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.optionMenu {
+  position: absolute;
+  background: rgb(237, 154, 237);
+  left: -4rem;
+  display: none;
+  z-index: 6;
+}
+
+.optionMenu > a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: black;
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 1rem 0.2rem 0rem;
+  font-weight: 600;
+}
+
+.optionMenu > a:hover {
+  background: rgb(159, 45, 159);
+}
+
+.optionMenu > a > svg {
+  height: 2rem;
+  width: 2rem;
+  margin: 0.5rem 1rem;
+}
+
+.note {
+  display: grid;
+  background-color: rgb(237, 154, 237);
+  margin: 6px;
+  padding: 5px;
+  max-height: 24vh;
+  border-radius: 1rem;
+}
+
+.noteElement {
+  background-color: rgb(159, 45, 159);
+  text-align: center;
+  padding: 6px;
+  font-size: 2rem;
+}
+
+/* First version of both the classes. Required in future notes updates. Starts here */
+/* .noteHeading {
+  grid-column: 1 / span 39;
+  grid-row: 1;
+  border-bottom: 0.1rem solid rgb(237, 154, 237);
+  border-radius: 1rem 0 0 0;
+}
+
+.noteBody {
+  grid-column: 1 / span 40;
+  grid-row: 2 / span 3;
+  font-size: 1.6rem;
+  font-weight: 600;
+  max-height: 16.54vh;
+  overflow: auto;
+  border-radius: 0 0 1rem 1rem;
+} */
+/* First version of both the classes. Required in future notes updates. Ends here */
+
+.noteBody {
+  grid-column: 1 / span 49;
+  grid-row: 1;
+  word-wrap: break-word;
+  font-size: 1.6rem;
+  font-weight: 600;
+  max-height: 16.54vh;
+  overflow: auto;
+  border-radius: 1rem 0 0 1rem;
+  padding: 0.8rem;
+}
+
+.noteOption {
+  grid-column: 50;
+  grid-row: 1;
+  border-left: 0.1rem solid rgb(237, 154, 237);
+  border-radius: 0 1rem 1rem 0;
+  align-self: stretch;
+}
+
+.settingsOption > p {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+#footer > * {
+  font-size: 6rem;
+  font-weight: 900;
+}
+
+/* Switch classes starts here */
+.active {
+  display: block;
+}
+.dim {
+  filter: blur(0.15rem);
+}
+/* Switch classes ends here */
+
+/* ========================
+Responsiveness Management section
+======================== */
+@media screen and (min-width: 280px) {
+  .tabContent {
+    height: 62vh; /* 70vh */
+  }
+  .createNew {
+    bottom: 5rem;
+  }
+  .tabHeader {
+    grid-template-columns: 64% auto auto;
+  }
+  .confirmationBox {
+    top: 20rem;
+  }
+  .settingsTabHeader {
+    grid-template-columns: 77% auto;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    padding: 5rem 1.5rem;
+  }
+  header {
+    height: 7vh;
+    border-radius: 1rem 1rem 0 0;
+  }
+  main {
+    height: 84vh;
+  }
+  main, nav {
+    border-radius: 0 0 1rem 1rem;
+  }
+  header, main {
+    width: 70%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .tabContent {
+    height: 70vh;
+  }
+  .confirmationBox {
+    top: 35rem;
+  }
+  .addNewBtn {
+    margin: 0.7rem 1.5rem;
+    padding: 0.7rem 5rem;
+  }
+}
+
+@media screen and (min-width: 766px) {
+  .tabContent {
+    height: 64vh;
+  }
+  .addNewBtn {
+    margin: 0.7rem 1.5rem;
+    padding: 0.7rem 5rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  body {
+    padding: 2rem 1.5rem;
+  }
+  main {
+    height: 87vh;
+  }
+  .confirmationBox {
+    top: 20rem;
+  }
+  .createNew {
+    bottom: 5rem;
+  }
+  .addNewBtn {
+    margin: 0.5rem 1.5rem;
+    padding: 0.7rem 7rem;
+  }
+  .cancelBtn {
+    margin: 0.5rem 1.5rem;
+    padding: 0.6rem 4rem;
+  }
+  .tabContent {
+    height: 60vh;
+  }
+}
+
+/* ========================
+Animation Management section
+======================== */
+nav > a:hover {
+  cursor: pointer;
+}
+
+nav > a:active {
+  transform: translateY(4px);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active,
+.optionMenu > a:active {
+  transform: translateY(2px);
+  transition: transform 0.1s;
+}
+
+
+/* ========================
+To-Do App CSS Code ends here.
+======================== */
