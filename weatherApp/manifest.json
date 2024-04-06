@@ -13,33 +13,33 @@
       "type" : "image/png"
     }
   ],
-  "id" : "",
-  "start_url" : "",
+  "id" : "/weatherApp/weatherApp",
+  "start_url" : "https://ritesh-chaurasiya.netlify.app/weatherapp/weatherapp#today",
   "background_color" : "rgba(140, 255, 102, 0.2)",
   "orientation" : "portrait",
   "display" : "standalone",
-  "scope" : "",
+  "scope" : "https://ritesh-chaurasiya.netlify.app",
   "theme_color" : "rgba(140, 255, 102, 0.2)",
   "shortcuts" : [
     {
       "name": "How's the weather today?",
       "short_name": "Today weather",
       "description": "View weather information for today",
-      "url": "/today?source=pwa",
+      "url": "/weatherapp/weatherapp#today",
       "icons": [{ "src": "today.png", "sizes": "192x192" }]
     },
     {
       "name": "How's the weather tomorrow?",
       "short_name": "Tomorrow weather",
       "description": "View weather information for tomorrow",
-      "url": "/tomorrow?source=pwa",
+      "url": "/weatherapp/weatherapp#tomorrow",
       "icons": [{ "src": "tomorrow.png", "sizes": "192x192" }]
     },
     {
       "name": "How's the weather this week?",
       "short_name": "Forecast weather",
       "description": "View weather information for this week",
-      "url": "/tomorrow?source=pwa",
+      "url": "/weatherapp/weatherapp#forecast",
       "icons": [{ "src": "forecast.png", "sizes": "192x192" }]
     }
   ],
