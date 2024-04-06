@@ -1,0 +1,190 @@
+/* 
+------
+fonts
+------
+
+font-family: 'Genos', sans-serif;
+font-family: 'Itim', cursive;
+font-family: 'Petit Formal Script', cursive;
+
+------
+*/
+
+/* 
+---------
+universal
+---------
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+html,
+body {
+  height: 100%;
+  background-image: url("developer_at_work.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.body {
+  height: 100%;
+  background-color: rgba(249, 249, 249, 0.12);
+}
+
+/* 
+---------
+typography
+---------
+*/
+
+.topnav a,
+.botnav a {
+  font-family: 'Genos', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: #00ffa6;
+  text-decoration: none;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#home {
+  background-color: rgba(99, 99, 99, 0.9);
+  color: #00ffa6;
+  text-decoration: none;
+  align-self: center;
+}
+
+.topnav a:hover,
+.botnav a:hover {
+  text-decoration: underline;
+  background-color: rgba(249, 249, 249, 0.9);
+  color: #ff66ff;
+}
+
+.main h1 {
+  font-family: 'Petit Formal Script', cursive;
+  font-size: 3.69rem;
+  color: #7cfc00;
+  text-align: center;
+  padding: 2rem 0.9rem;
+}
+
+.main p,
+.footer p {
+  font-family: 'Itim', cursive;
+}
+
+.main p {
+  color: #00ffff;
+  font-weight: 600;
+  font-size: 1.9rem;
+  letter-spacing: 0.6rem;
+  text-align: center;
+  padding: 1rem 0.4rem;
+}
+
+.footer p {
+  color: beige;
+  letter-spacing: 0.1rem;
+}
+
+
+/* 
+---------
+layout
+---------
+*/
+
+.topnav,
+.botnav {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.topnav a {
+  padding: 0.6rem 2rem;
+}
+
+@media (max-width: 767px) {}
+
+.main {
+  width: 50%;
+  border: 0.2rem solid #ffffff;
+  background-color: rgba(9, 9, 9, 0.29);
+  position: absolute;
+  top: 46%;
+  left: 49%;
+  transform: translate(-47%, -46%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+hr {
+  width: 90%;
+  height: 0.1rem;
+  background-color: #ffffff;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.botnav a {
+  padding: 0.49rem 2rem;
+}
+
+.footer p {
+  background-color: rgba(2, 2, 2, 0.6);
+  text-align: center;
+  padding: 0.2rem;
+}
+
+@media (max-width: 767px) {
+  .topnav {
+    flex-direction: column;
+  }
+
+  .topnav a,
+  .botnav a {
+    font-size: 1.6rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .main {
+    position: inherit;
+    transform: inherit;
+    width: 90%;
+    margin: 3rem auto;
+  }
+
+  .main h1 {
+    font-size: 2.69rem;
+  }
+
+  .main p {
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 0.4rem;
+  }
+}
+
+@media (max-width: 312px) {
+  .main {
+    margin: 1.9rem auto;
+  }
+
+  .main h1 {
+    font-size: 2rem;
+  }
+}
