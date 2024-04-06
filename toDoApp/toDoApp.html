@@ -1,0 +1,410 @@
+<!-- ========================
+To-Do App HTML Code starts here.
+========================  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="To-Do & Notes App - Simple application to manage your tasks and notes." />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="manifest" href="manifest.json" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="app.js"></script>
+  <title>To-Do & Notes App</title>
+</head>
+
+<body>
+
+  <header>
+    <h1 id="header">
+      To-Do & Notes App
+    </h1>
+  </header>
+
+  <main>
+
+    <nav>
+      <a href="#toDo" id="toDoTab" class="tab">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+          viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+            <path d="M344 967 c-3 -8 -4 -47 -2 -88 l3 -74 155 0 155 0 0 85 0 85 -153 3 c-122 2 -153 0 -158 -11z" />
+            <path
+              d="M140 920 c-19 -19 -20 -33 -20 -420 0 -387 1 -401 20 -420 19 -19 33 -20 360 -20 327 0 341 1 360 20 19 19 20 33 20 420 0 471 8 440 -110 440 l-70 0 0 -50 0 -50 40 0 40 0 0 -340 0 -340 -280 0 -280 0 0 340 0 340 40 0 40 0 0 50 0 50 -70 0 c-57 0 -74 -4 -90 -20z" />
+            <path d="M597 642 c-16 -17 -15 -20 16 -50 32 -31 34 -32 50 -14 21 23 22 46 1 66 -21 21 -47 20 -67 -2z" />
+            <path
+              d="M443 487 c-92 -92 -113 -119 -119 -151 l-7 -39 39 7 c32 6 58 27 152 119 l112 113 -33 32 -33 32 -111 -113z" />
+          </g>
+        </svg>
+        To-Do
+      </a>
+      <a href="#done" id="doneTab" class="tab">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+          viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+            <path d="M344 947 c-3 -8 -4 -47 -2 -88 l3 -74 155 0 155 0 0 85 0 85 -153 3 c-122 2 -153 0 -158 -11z" />
+            <path
+              d="M140 900 c-19 -19 -20 -33 -20 -420 0 -387 1 -401 20 -420 19 -19 33 -20 360 -20 327 0 341 1 360 20 19 19 20 33 20 420 0 471 8 440 -110 440 l-70 0 0 -50 0 -50 40 0 40 0 0 -340 0 -340 -280 0 -280 0 0 340 0 340 40 0 40 0 0 50 0 50 -70 0 c-57 0 -74 -4 -90 -20z" />
+            <path
+              d="M638 613 c-19 -26 -63 -90 -97 -140 -35 -51 -67 -93 -72 -93 -5 0 -39 27 -75 61 -61 57 -83 67 -91 43 -2 -6 37 -47 86 -92 l89 -82 108 157 c59 86 107 163 108 171 2 32 -23 21 -56 -25z" />
+          </g>
+        </svg>
+        Done
+      </a>
+      <a href="#notes" id="notesTab" class="tab">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+          viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+            <path
+              d="M100 900 c-19 -19 -20 -33 -20 -390 0 -357 1 -371 20 -390 19 -19 33 -20 353 -20 l333 0 35 -36 c64 -67 115 -78 159 -34 32 32 26 74 -20 124 l-40 43 0 342 c0 328 -1 342 -20 361 -19 19 -33 20 -400 20 -367 0 -381 -1 -400 -20z m778 -345 l2 -320 -97 97 c-92 90 -102 98 -162 113 -40 10 -67 13 -73 7 -6 -6 -3 -33 8 -73 15 -58 25 -72 103 -152 l86 -87 -310 2 -310 3 -3 355 c-1 195 0 361 3 368 3 10 84 12 377 10 l373 -3 3 -320z m-43 -324 l99 -101 -29 -30 -29 -31 -133 133 -133 132 27 28 26 27 36 -29 c20 -16 81 -74 136 -129z" />
+            <path d="M245 729 c-16 -25 21 -29 261 -27 213 3 249 5 249 18 0 13 -36 15 -252 18 -175 2 -254 -1 -258 -9z" />
+            <path d="M245 589 c-16 -25 21 -29 261 -27 213 3 249 5 249 18 0 13 -36 15 -252 18 -175 2 -254 -1 -258 -9z" />
+            <path d="M245 449 c-15 -23 15 -30 121 -27 89 2 109 6 109 18 0 12 -20 16 -112 18 -74 2 -114 -1 -118 -9z" />
+          </g>
+        </svg>
+        Notes
+      </a>
+      <a href="#settings" id="settingsTab" class="tab">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+          viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+          <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+            <path
+              d="M598 943 c-36 -15 -38 -17 -35 -62 l2 -46 -45 3 c-44 2 -45 1 -61 -37 l-17 -39 37 -31 36 -30 -24 -21 c-13 -12 -31 -24 -38 -29 -12 -6 -12 -14 2 -49 17 -41 18 -42 64 -39 l46 2 -3 -34 c-1 -19 -5 -37 -7 -40 -3 -2 -21 10 -39 28 l-34 33 -31 -21 c-44 -32 -64 -24 -75 27 l-9 42 -47 0 -47 0 -9 -42 c-11 -51 -31 -59 -75 -27 l-31 22 -35 -35 -35 -36 22 -30 c32 -43 24 -65 -28 -75 l-42 -8 0 -49 0 -49 42 -8 c51 -10 59 -30 27 -74 l-22 -31 36 -35 35 -36 31 22 c36 26 64 24 69 -4 10 -65 10 -65 60 -65 l48 0 10 42 c11 51 31 59 75 27 l31 -22 35 36 36 35 -27 34 c-31 42 -21 62 37 72 37 7 37 7 37 56 l0 48 -40 7 c-55 9 -65 30 -33 71 l24 32 42 -19 42 -19 25 30 c23 27 60 41 60 23 0 -5 8 -18 18 -31 18 -23 19 -23 59 -7 40 16 41 17 40 63 l-2 47 45 -3 c44 -2 45 -1 62 38 l17 41 -34 22 c-44 28 -44 41 -1 69 l34 22 -16 42 c-15 41 -16 42 -61 40 l-46 -1 3 43 c2 40 1 44 -32 57 -48 20 -52 19 -73 -15 -23 -40 -46 -38 -69 5 -10 19 -21 35 -24 34 -3 -1 -22 -8 -42 -16z m47 -63 c13 -26 21 -30 55 -30 34 0 42 4 55 30 20 38 39 29 32 -15 -8 -46 35 -88 80 -79 42 8 50 -11 13 -32 -25 -15 -30 -25 -30 -56 0 -30 5 -40 29 -54 39 -23 31 -45 -12 -33 -27 8 -35 5 -59 -18 -24 -23 -27 -32 -22 -65 8 -45 -7 -51 -32 -13 -24 36 -85 35 -112 -2 -24 -33 -46 -23 -37 19 10 43 -27 80 -74 76 -44 -4 -51 15 -13 37 24 15 29 24 29 56 0 22 -2 39 -6 39 -3 0 -16 8 -28 18 -32 24 -17 45 24 33 44 -13 77 22 71 73 -3 30 0 39 19 45 1 1 9 -12 18 -29z m-303 -352 c2 -27 10 -37 40 -51 37 -18 38 -18 64 2 20 16 30 18 40 10 11 -9 10 -16 -7 -40 -19 -28 -20 -32 -6 -67 13 -32 20 -37 51 -40 27 -2 36 -8 36 -21 0 -14 -10 -20 -38 -25 -32 -5 -40 -11 -51 -42 -12 -33 -11 -39 8 -64 16 -23 18 -30 7 -39 -10 -8 -20 -6 -39 9 -25 20 -27 20 -64 3 -28 -14 -39 -26 -43 -48 -6 -35 -40 -49 -40 -17 0 36 -12 52 -47 67 -32 14 -37 13 -62 -5 -39 -27 -58 -8 -31 31 18 25 19 30 5 62 -14 35 -31 47 -66 47 -12 0 -19 7 -19 20 0 13 7 20 19 20 35 0 52 12 66 47 14 32 13 37 -5 63 -16 23 -17 30 -6 39 10 8 19 6 39 -9 25 -20 27 -20 64 -3 31 15 39 24 41 51 2 23 8 32 22 32 14 0 20 -9 22 -32z" />
+            <path
+              d="M651 786 c-87 -48 -50 -186 49 -186 51 0 100 49 100 99 0 75 -83 124 -149 87z m89 -46 c11 -11 20 -29 20 -40 0 -11 -9 -29 -20 -40 -11 -11 -29 -20 -40 -20 -11 0 -29 9 -40 20 -11 11 -20 29 -20 40 0 11 9 29 20 40 11 11 29 20 40 20 11 0 29 -9 40 -20z" />
+            <path
+              d="M271 406 c-87 -48 -50 -186 49 -186 51 0 100 49 100 99 0 75 -83 124 -149 87z m89 -46 c11 -11 20 -29 20 -40 0 -26 -34 -60 -60 -60 -26 0 -60 34 -60 60 0 11 9 29 20 40 11 11 29 20 40 20 11 0 29 -9 40 -20z" />
+          </g>
+        </svg>
+        Settings
+      </a>
+    </nav>
+
+    <section id="toDo" class="tabPage">
+      <div class="tabHeader">
+        <h2>To-Do</h2>
+        <button class="deleteAllBtn" title="Delete All" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+            viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path
+                d="M380 940 c-11 -11 -20 -33 -20 -50 l0 -29 -107 -3 c-77 -2 -108 -7 -111 -16 -2 -7 5 -16 17 -19 21 -5 21 -8 21 -374 0 -356 1 -370 20 -389 19 -19 33 -20 248 -20 198 0 233 -2 263 -17 54 -28 146 -24 196 9 75 49 107 138 84 226 -15 55 -76 117 -130 132 l-41 11 0 208 c0 204 0 209 21 214 12 3 19 12 17 19 -3 9 -34 14 -111 16 l-107 3 0 29 c0 56 -27 70 -140 70 -87 0 -103 -3 -120 -20z m218 -52 l3 -28 -100 0 c-99 0 -101 0 -101 23 0 13 3 27 7 31 4 4 48 5 98 4 90 -3 90 -3 93 -30z m-203 -439 c0 -228 -2 -264 -15 -264 -13 0 -15 36 -18 255 -1 140 0 261 3 268 3 8 11 12 18 9 9 -3 12 -65 12 -268z m120 0 c0 -228 -2 -264 -15 -264 -13 0 -15 36 -18 255 -1 140 0 261 3 268 3 8 11 12 18 9 9 -3 12 -65 12 -268z m123 66 c2 -132 -1 -202 -8 -211 -6 -7 -15 -25 -20 -41 -5 -17 -9 63 -9 208 -1 130 2 239 6 243 23 22 28 -12 31 -199z m228 -171 c103 -49 125 -175 45 -255 -66 -66 -159 -65 -223 2 -122 128 19 328 178 253z" />
+              <path
+                d="M714 279 c-3 -6 9 -26 27 -45 l33 -34 -34 -35 c-26 -27 -31 -38 -22 -47 9 -9 20 -4 47 22 l35 34 35 -34 c27 -26 38 -31 47 -22 9 9 4 20 -22 47 l-34 35 34 35 c26 27 31 38 22 47 -9 9 -20 4 -47 -22 l-35 -34 -33 32 c-36 35 -42 37 -53 21z" />
+            </g>
+          </svg>
+        </button>
+        <div id="" class="confirmationBox floatingBox">
+          <h3>Delete All - Confirmation</h3>
+          <p>Are you sure you want to delete all the uncompleted tasks?</p>
+          <div class="floatingBoxButtonBox">
+            <button id="" class="deleteBtn actionBtn" title="Delete" type="button">Delete</button>
+            <button class="cancelBtn" title="Cancel" type="button">Cancel</button>
+          </div>
+        </div>
+        <!-- Add a search bar with working search functionality. -->
+        <button class="searchBtn" title="Search" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path
+                d="M315 911 c-227 -59 -307 -329 -145 -491 96 -96 253 -113 362 -38 37 26 48 23 48 -15 0 -28 16 -48 125 -157 l125 -125 42 43 43 42 -125 125 c-109 109 -129 125 -157 125 -38 0 -41 11 -15 48 33 48 46 95 45 162 -1 151 -114 271 -266 285 -29 2 -65 1 -82 -4z m143 -96 c49 -21 81 -52 103 -100 36 -77 16 -188 -42 -242 -76 -70 -212 -70 -288 0 -76 70 -80 217 -8 296 52 56 159 77 235 46z" />
+            </g>
+          </svg>
+        </button>
+      </div>
+      <div class="tabContent">
+        <button class="createNew" title="Create New" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+            viewBox="0 0 225.000000 225.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path
+                d="M1045 2021 c-40 -24 -71 -60 -84 -94 -7 -18 -11 -138 -11 -323 l0 -294 -295 0 c-253 0 -301 -2 -328 -16 -74 -38 -107 -88 -107 -164 0 -90 38 -146 119 -175 35 -12 98 -15 327 -15 l284 0 0 -294 c0 -305 3 -331 43 -374 74 -80 200 -80 274 0 40 43 43 69 43 374 l0 294 284 0 c229 0 292 3 327 15 81 29 120 85 120 171 0 64 -19 103 -74 148 l-39 31 -309 3 -309 3 0 300 c0 202 -4 307 -11 322 -17 32 -60 77 -91 93 -39 20 -127 18 -163 -5z" />
+            </g>
+          </svg>
+        </button>
+        <div id="" class="createNewBox floatingBox">
+          <h3>Add New Task</h3>
+          <p class="inputBox" contenteditable="true"></p>
+          <div class="floatingBoxButtonBox">
+            <button id="" class="addBtn actionBtn" title="Add" type="button">Add</button>
+            <button class="cancelBtn" title="Cancel" type="button">Cancel</button>
+          </div>
+        </div>
+        <div id="" class="editFloatingBox floatingBox">
+          <h3>Edit Task</h3>
+          <p class="editBox" contenteditable="true"></p>
+          <div class="floatingBoxButtonBox">
+            <button id="" class="saveBtn actionBtn" title="Save" type="button">Save</button>
+            <button class="cancelBtn" title="Cancel" type="button">Cancel</button>
+          </div>
+        </div>
+        <div class="contentList">
+        </div>
+        <p class="noContent">
+          <strong>
+            No Tasks here.
+            <br>
+            <br>
+            Use the Create Button Below to create new tasks.
+          </strong>
+        </p>
+      </div>
+    </section>
+
+    <section id="done" class="tabPage">
+      <div class="tabHeader">
+        <h2>Done</h2>
+        <button class="deleteAllBtn" title="Delete All" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+            viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path
+                d="M380 940 c-11 -11 -20 -33 -20 -50 l0 -29 -107 -3 c-77 -2 -108 -7 -111 -16 -2 -7 5 -16 17 -19 21 -5 21 -8 21 -374 0 -356 1 -370 20 -389 19 -19 33 -20 248 -20 198 0 233 -2 263 -17 54 -28 146 -24 196 9 75 49 107 138 84 226 -15 55 -76 117 -130 132 l-41 11 0 208 c0 204 0 209 21 214 12 3 19 12 17 19 -3 9 -34 14 -111 16 l-107 3 0 29 c0 56 -27 70 -140 70 -87 0 -103 -3 -120 -20z m218 -52 l3 -28 -100 0 c-99 0 -101 0 -101 23 0 13 3 27 7 31 4 4 48 5 98 4 90 -3 90 -3 93 -30z m-203 -439 c0 -228 -2 -264 -15 -264 -13 0 -15 36 -18 255 -1 140 0 261 3 268 3 8 11 12 18 9 9 -3 12 -65 12 -268z m120 0 c0 -228 -2 -264 -15 -264 -13 0 -15 36 -18 255 -1 140 0 261 3 268 3 8 11 12 18 9 9 -3 12 -65 12 -268z m123 66 c2 -132 -1 -202 -8 -211 -6 -7 -15 -25 -20 -41 -5 -17 -9 63 -9 208 -1 130 2 239 6 243 23 22 28 -12 31 -199z m228 -171 c103 -49 125 -175 45 -255 -66 -66 -159 -65 -223 2 -122 128 19 328 178 253z" />
+              <path
+                d="M714 279 c-3 -6 9 -26 27 -45 l33 -34 -34 -35 c-26 -27 -31 -38 -22 -47 9 -9 20 -4 47 22 l35 34 35 -34 c27 -26 38 -31 47 -22 9 9 4 20 -22 47 l-34 35 34 35 c26 27 31 38 22 47 -9 9 -20 4 -47 -22 l-35 -34 -33 32 c-36 35 -42 37 -53 21z" />
+            </g>
+          </svg>
+        </button>
+        <div id="" class="confirmationBox floatingBox">
+          <h3>Delete All - Confirmation</h3>
+          <p>Are you sure you want to delete all the completed tasks?</p>
+          <div class="floatingBoxButtonBox">
+            <button id="" class="deleteBtn actionBtn" title="Delete" type="button">Delete</button>
+            <button class="cancelBtn" title="Cancel" type="button">Cancel</button>
+          </div>
+        </div>
+        <!-- Add a search bar with working search functionality. -->
+        <button class="searchBtn" title="Search" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+            viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path
+                d="M315 911 c-227 -59 -307 -329 -145 -491 96 -96 253 -113 362 -38 37 26 48 23 48 -15 0 -28 16 -48 125 -157 l125 -125 42 43 43 42 -125 125 c-109 109 -129 125 -157 125 -38 0 -41 11 -15 48 33 48 46 95 45 162 -1 151 -114 271 -266 285 -29 2 -65 1 -82 -4z m143 -96 c49 -21 81 -52 103 -100 36 -77 16 -188 -42 -242 -76 -70 -212 -70 -288 0 -76 70 -80 217 -8 296 52 56 159 77 235 46z" />
+            </g>
+          </svg>
+        </button>
+      </div>
+      <div class="tabContent">
+        <div id="" class="editFloatingBox floatingBox">
+          <h3>Edit Task</h3>
+          <p class="editBox" contenteditable="true"></p>
+          <div class="floatingBoxButtonBox">
+            <button id="" class="saveBtn actionBtn" title="Save" type="button">Save</button>
+            <button class="cancelBtn" title="Cancel" type="button">Cancel</button>
+          </div>
+        </div>
+        <div class="contentList">
+        </div>
+        <p class="noContent">
+          <strong>
+            No Tasks here.
+            <br>
+            <br>
+            Use the Create Button in To-Do Tab Below to create new tasks.
+          </strong>
+        </p>
+      </div>
+    </section>
+
+    <section id="notes" class="tabPage">
+      <div class="tabHeader">
+        <h2>Notes</h2>
+        <button class="deleteAllBtn" title="Delete All" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+            viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path
+                d="M380 940 c-11 -11 -20 -33 -20 -50 l0 -29 -107 -3 c-77 -2 -108 -7 -111 -16 -2 -7 5 -16 17 -19 21 -5 21 -8 21 -374 0 -356 1 -370 20 -389 19 -19 33 -20 248 -20 198 0 233 -2 263 -17 54 -28 146 -24 196 9 75 49 107 138 84 226 -15 55 -76 117 -130 132 l-41 11 0 208 c0 204 0 209 21 214 12 3 19 12 17 19 -3 9 -34 14 -111 16 l-107 3 0 29 c0 56 -27 70 -140 70 -87 0 -103 -3 -120 -20z m218 -52 l3 -28 -100 0 c-99 0 -101 0 -101 23 0 13 3 27 7 31 4 4 48 5 98 4 90 -3 90 -3 93 -30z m-203 -439 c0 -228 -2 -264 -15 -264 -13 0 -15 36 -18 255 -1 140 0 261 3 268 3 8 11 12 18 9 9 -3 12 -65 12 -268z m120 0 c0 -228 -2 -264 -15 -264 -13 0 -15 36 -18 255 -1 140 0 261 3 268 3 8 11 12 18 9 9 -3 12 -65 12 -268z m123 66 c2 -132 -1 -202 -8 -211 -6 -7 -15 -25 -20 -41 -5 -17 -9 63 -9 208 -1 130 2 239 6 243 23 22 28 -12 31 -199z m228 -171 c103 -49 125 -175 45 -255 -66 -66 -159 -65 -223 2 -122 128 19 328 178 253z" />
+              <path
+                d="M714 279 c-3 -6 9 -26 27 -45 l33 -34 -34 -35 c-26 -27 -31 -38 -22 -47 9 -9 20 -4 47 22 l35 34 35 -34 c27 -26 38 -31 47 -22 9 9 4 20 -22 47 l-34 35 34 35 c26 27 31 38 22 47 -9 9 -20 4 -47 -22 l-35 -34 -33 32 c-36 35 -42 37 -53 21z" />
+            </g>
+          </svg>
+        </button>
+        <div id="" class="confirmationBox floatingBox">
+          <h3>Delete All - Confirmation</h3>
+          <p>Are you sure you want to delete all the notes?</p>
+          <div class="floatingBoxButtonBox">
+            <button id="" class="deleteBtn actionBtn" title="Delete" type="button">Delete</button>
+            <button class="cancelBtn" title="Cancel" type="button">Cancel</button>
+          </div>
+        </div>
+        <!-- Add a search bar with working search functionality. -->
+        <button class="searchBtn" title="Search" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path
+                d="M315 911 c-227 -59 -307 -329 -145 -491 96 -96 253 -113 362 -38 37 26 48 23 48 -15 0 -28 16 -48 125 -157 l125 -125 42 43 43 42 -125 125 c-109 109 -129 125 -157 125 -38 0 -41 11 -15 48 33 48 46 95 45 162 -1 151 -114 271 -266 285 -29 2 -65 1 -82 -4z m143 -96 c49 -21 81 -52 103 -100 36 -77 16 -188 -42 -242 -76 -70 -212 -70 -288 0 -76 70 -80 217 -8 296 52 56 159 77 235 46z" />
+            </g>
+          </svg>
+        </button>
+      </div>
+      <div class="tabContent">
+        <button class="createNew" title="Create New" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+            viewBox="0 0 225.000000 225.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,225.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path
+                d="M1045 2021 c-40 -24 -71 -60 -84 -94 -7 -18 -11 -138 -11 -323 l0 -294 -295 0 c-253 0 -301 -2 -328 -16 -74 -38 -107 -88 -107 -164 0 -90 38 -146 119 -175 35 -12 98 -15 327 -15 l284 0 0 -294 c0 -305 3 -331 43 -374 74 -80 200 -80 274 0 40 43 43 69 43 374 l0 294 284 0 c229 0 292 3 327 15 81 29 120 85 120 171 0 64 -19 103 -74 148 l-39 31 -309 3 -309 3 0 300 c0 202 -4 307 -11 322 -17 32 -60 77 -91 93 -39 20 -127 18 -163 -5z" />
+            </g>
+          </svg>
+        </button>
+        <div id="" class="createNewBox floatingBox">
+          <h3>Add New Note</h3>
+          <p class="inputBox" contenteditable="true"></p>
+          <div class="floatingBoxButtonBox">
+            <button id="" class="addBtn actionBtn" title="Add" type="button">Add</button>
+            <button class="cancelBtn" title="Cancel" type="button">Cancel</button>
+          </div>
+        </div>
+        <div id="" class="editFloatingBox floatingBox">
+          <h3>Edit Note</h3>
+          <p class="editBox" contenteditable="true"></p>
+          <div class="floatingBoxButtonBox">
+            <button id="" class="saveBtn actionBtn" title="Save" type="button">Save</button>
+            <button class="cancelBtn" title="Cancel" type="button">Cancel</button>
+          </div>
+        </div>
+        <div class="contentList notesList">
+        </div>
+        <p class="noContent">
+          <strong>
+            No Notes here.
+            <br>
+            <br>
+            Use the Create Button Below to create new notes.
+          </strong>
+        </p>
+      </div>
+    </section>
+
+    <section id="settings" class="tabPage">
+      <div class="tabHeader settingsTabHeader">
+        <h2>Settings</h2>
+        <button class="deleteAllBtn" title="Delete All" type="button">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt"
+            viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+            <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" stroke="none">
+              <path
+                d="M380 940 c-11 -11 -20 -33 -20 -50 l0 -29 -107 -3 c-77 -2 -108 -7 -111 -16 -2 -7 5 -16 17 -19 21 -5 21 -8 21 -374 0 -356 1 -370 20 -389 19 -19 33 -20 248 -20 198 0 233 -2 263 -17 54 -28 146 -24 196 9 75 49 107 138 84 226 -15 55 -76 117 -130 132 l-41 11 0 208 c0 204 0 209 21 214 12 3 19 12 17 19 -3 9 -34 14 -111 16 l-107 3 0 29 c0 56 -27 70 -140 70 -87 0 -103 -3 -120 -20z m218 -52 l3 -28 -100 0 c-99 0 -101 0 -101 23 0 13 3 27 7 31 4 4 48 5 98 4 90 -3 90 -3 93 -30z m-203 -439 c0 -228 -2 -264 -15 -264 -13 0 -15 36 -18 255 -1 140 0 261 3 268 3 8 11 12 18 9 9 -3 12 -65 12 -268z m120 0 c0 -228 -2 -264 -15 -264 -13 0 -15 36 -18 255 -1 140 0 261 3 268 3 8 11 12 18 9 9 -3 12 -65 12 -268z m123 66 c2 -132 -1 -202 -8 -211 -6 -7 -15 -25 -20 -41 -5 -17 -9 63 -9 208 -1 130 2 239 6 243 23 22 28 -12 31 -199z m228 -171 c103 -49 125 -175 45 -255 -66 -66 -159 -65 -223 2 -122 128 19 328 178 253z" />
+              <path
+                d="M714 279 c-3 -6 9 -26 27 -45 l33 -34 -34 -35 c-26 -27 -31 -38 -22 -47 9 -9 20 -4 47 22 l35 34 35 -34 c27 -26 38 -31 47 -22 9 9 4 20 -22 47 l-34 35 34 35 c26 27 31 38 22 47 -9 9 -20 4 -47 -22 l-35 -34 -33 32 c-36 35 -42 37 -53 21z" />
+              </g>
+            </svg>
+          </button>
+        <div id="" class="confirmationBox floatingBox">
+          <h3>Clear All Data - Confirmation</h3>
+          <p>Are you sure you want to delete all the data of this whole application (All your To-Do's, Done's & Notes') ?</p>
+          <div class="floatingBoxButtonBox">
+            <button id="" class="deleteBtn actionBtn" title="Delete" type="button">Delete</button>
+            <button class="cancelBtn" title="Cancel" type="button">Cancel</button>
+          </div>
+        </div>
+      </div>
+      <div class="tabContent">
+        <div class="contentList">
+          <div class="task settingsOption">
+            <p>
+              All the settings of this app are on its way in the coming update.
+            </p>
+            <!-- <button id="" class="option" title="Option" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="200.000000pt" viewBox="0 0 100.000000 200.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" stroke="none">
+                  <path
+                    d="M414 1675 c-98 -59 -98 -196 0 -269 39 -29 133 -29 173 0 72 54 93 136 53 214 -39 77 -146 103 -226 55z" />
+                  <path
+                    d="M420 1138 c-59 -40 -82 -84 -78 -146 7 -85 62 -141 146 -150 63 -6 120 24 151 78 59 105 -9 228 -131 238 -44 3 -59 0 -88 -20z" />
+                  <path
+                    d="M440 609 c-89 -37 -125 -141 -80 -229 25 -48 81 -80 142 -80 158 0 215 197 86 293 -31 23 -111 32 -148 16z" />
+                </g>
+              </svg>
+              <div class="optionMenu toDoMenu">
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+    
+                    <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path d="M150 845 l-24 -26 159 -159 160 -160 -160 -160 -160 -160 28 -27 27 -28 160 160 160 160 160 -160 160 -160 27 28 28 27 -160 160 -160 160 160 160 160 160 -28 27 -27 28 -160 -160 -160 -160 -158 158 c-86 86 -160 157 -163 157 -3 0 -16 -11 -29 -25z"/>
+                    </g>
+                  </svg>
+                  Delete
+                </a>
+              </div>
+            </button> -->
+          </div>
+          <div class="task settingsOption">
+            <!-- <p>
+              All the current and upcoming settings of this app will be here.
+            </p> -->
+            <!-- <button id="" class="option" title="Option" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="200.000000pt" viewBox="0 0 100.000000 200.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" stroke="none">
+                  <path
+                    d="M414 1675 c-98 -59 -98 -196 0 -269 39 -29 133 -29 173 0 72 54 93 136 53 214 -39 77 -146 103 -226 55z" />
+                  <path
+                    d="M420 1138 c-59 -40 -82 -84 -78 -146 7 -85 62 -141 146 -150 63 -6 120 24 151 78 59 105 -9 228 -131 238 -44 3 -59 0 -88 -20z" />
+                  <path
+                    d="M440 609 c-89 -37 -125 -141 -80 -229 25 -48 81 -80 142 -80 158 0 215 197 86 293 -31 23 -111 32 -148 16z" />
+                </g>
+              </svg>
+              <div class="optionMenu toDoMenu">
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+    
+                    <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path d="M150 845 l-24 -26 159 -159 160 -160 -160 -160 -160 -160 28 -27 27 -28 160 160 160 160 160 -160 160 -160 27 28 28 27 -160 160 -160 160 160 160 160 160 -28 27 -27 28 -160 -160 -160 -160 -158 158 c-86 86 -160 157 -163 157 -3 0 -16 -11 -29 -25z"/>
+                    </g>
+                  </svg>
+                  Delete
+                </a>
+              </div>
+            </button> -->
+          </div>
+          <div class="task settingsOption">
+            <p>More features Coming Soon. Stay tuned!!</p>
+            <!-- <button id="" class="option" title="Option" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="200.000000pt" viewBox="0 0 100.000000 200.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,200.000000) scale(0.100000,-0.100000)" stroke="none">
+                  <path
+                    d="M414 1675 c-98 -59 -98 -196 0 -269 39 -29 133 -29 173 0 72 54 93 136 53 214 -39 77 -146 103 -226 55z" />
+                    <path
+                    d="M420 1138 c-59 -40 -82 -84 -78 -146 7 -85 62 -141 146 -150 63 -6 120 24 151 78 59 105 -9 228 -131 238 -44 3 -59 0 -88 -20z" />
+                  <path
+                    d="M440 609 c-89 -37 -125 -141 -80 -229 25 -48 81 -80 142 -80 158 0 215 197 86 293 -31 23 -111 32 -148 16z" />
+                </g>
+              </svg>
+              <div class="optionMenu toDoMenu">
+                <a href="#">
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.0" width="100.000000pt" height="100.000000pt" viewBox="0 0 100.000000 100.000000" preserveAspectRatio="xMidYMid meet">
+  
+                    <g transform="translate(0.000000,100.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path d="M150 845 l-24 -26 159 -159 160 -160 -160 -160 -160 -160 28 -27 27 -28 160 160 160 160 160 -160 160 -160 27 28 28 27 -160 160 -160 160 160 160 160 160 -28 27 -27 28 -160 -160 -160 -160 -158 158 c-86 86 -160 157 -163 157 -3 0 -16 -11 -29 -25z"/>
+                    </g>
+                  </svg>
+                  Delete
+                </a>
+              </div>
+            </button> -->
+          </div>
+          <div class="task settingsOption" id="footer">
+            <!-- <p>
+              TECH-A-INTERN Web-Development Internship Project
+            </p> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</body>
+
+</html>
+
+
+<!-- ========================
+To-Do App HTML Code ends here.
+========================  -->
