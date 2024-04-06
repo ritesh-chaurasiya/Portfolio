@@ -14,7 +14,7 @@
     }
   ],
   "id" : "",
-  "start_url" : "",
+  "start_url" : "https://ritesh-chaurasiya.netlify.app/todoapp/todoapp#toDo",
   "background_color" : "rgb(144, 238, 144)",
   "orientation" : "portrait",
   "display" : "standalone",
