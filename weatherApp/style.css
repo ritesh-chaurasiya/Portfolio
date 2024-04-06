@@ -1,0 +1,1587 @@
+/* ========================
+Simple Weather App CSS Code starts here.
+======================== */
+
+/*
+Prefixed by https://autoprefixer.github.io
+PostCSS: v8.4.14,
+Autoprefixer: v10.4.7
+Browsers: last 4 version
+*/
+
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 10px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}  
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+#background {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  z-index: -2;
+}
+
+header, main {
+  width: 100%;
+  margin: 0 auto;
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+}
+
+header {
+  height: 7.5vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 2;
+  -webkit-box-shadow: 0rem 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3), 0rem -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+          box-shadow: 0rem 0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3), 0rem -0.2rem 0.2rem 0.5rem rgba(0, 0, 0, 0.3);
+}
+
+#header {
+  font-size: 2.4rem;
+}
+
+main {
+  height: 92.5vh;
+  position: relative;
+  -webkit-box-shadow: 0rem 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
+          box-shadow: 0rem 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
+}  
+
+nav {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  z-index: 10;
+  -webkit-box-shadow: 0rem 0.2rem 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
+          box-shadow: 0rem 0.2rem 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
+}
+
+#tabHl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 1rem 1rem;
+  height: 15%;
+  z-index: -1;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+/* #tabHl::before {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  left: -1rem;
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--bgtrp);
+  border-top: 0.1rem solid #000000;
+  border-right: 0.1rem solid #000000;
+  border-radius: 0 1rem 0 0;
+  box-shadow: 0px 0px 0 0px lightgreen;
+}
+
+#tabHl::after {
+  content: "";
+  position: absolute;
+  top: 0rem;
+  right: -1rem;
+  height: 1rem;
+  width: 1rem;
+  background-color: var(--bgtrp);
+  border-top: 0.1rem solid #000000;
+  border-left: 0.1rem solid #000000;
+  border-radius: 1rem 0 0 0;
+  box-shadow: 0px 0px 0 0px lightgreen;
+} */
+
+nav > a {
+  text-decoration: none;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 1.8rem;
+  font-weight: bold;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: rgb(60, 60, 60);
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
+  -o-transition: transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
+}
+
+section {
+  width: 100%;
+  height: 93.4%;
+  display: none;
+  position: relative;
+}
+
+.tabHeader {
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+  -webkit-box-shadow: 0rem 0.2rem 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
+          box-shadow: 0rem 0.2rem 0.5rem 0.1rem rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  padding: 0.5rem 0rem 0rem 0rem;
+}
+
+.tabTitleContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-wrap: nowrap;
+  overflow: auto;
+}
+
+.tabTitleContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.tabHeader h2 {
+  font-size: 2.6rem;
+  padding: 0.7rem 2rem;
+}
+
+.tabHeader > button {
+  margin: 0.2rem 0.6rem;
+  padding: 0.2rem 1rem;
+  background: transparent;
+  border-color: black;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  border-left: 2px;
+  border-style: solid;
+}
+
+.tabHeader > button > svg {
+  height: 3.3rem;
+  width: 3.3rem;
+}
+
+.floatingBox {
+  position: absolute;
+  background: rgb(105, 224, 245, 0.9);
+  max-width: 500px;
+  width: 70%;
+  z-index: 6;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1rem;
+  -webkit-box-shadow: 
+  2rem 0rem 6rem 1rem rgb(50, 50, 50, 0.4), 
+  0rem 2rem 6rem 1rem rgb(50, 50, 50, 0.4), 
+  -2rem 0rem 6rem 1rem rgb(50, 50, 50, 0.4), 
+  0rem -2rem 6rem 1rem rgb(50, 50, 50, 0.4);
+          box-shadow: 
+  2rem 0rem 6rem 1rem rgb(50, 50, 50, 0.4), 
+  0rem 2rem 6rem 1rem rgb(50, 50, 50, 0.4), 
+  -2rem 0rem 6rem 1rem rgb(50, 50, 50, 0.4), 
+  0rem -2rem 6rem 1rem rgb(50, 50, 50, 0.4);
+  display: none;
+  left: 15%;
+}
+
+
+.floatingBox h3 {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.floatingBox > svg {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  height: 2.9rem;
+  width: 2.9rem;
+}
+
+.locationOption {
+  border-radius: 1rem;
+  background: rgba(2, 2, 2, 0.2);
+  margin: 1rem 0.5rem;
+  padding: 0.5rem;
+
+}
+
+.locationOption > div {
+  margin: 1rem 0.5rem;
+}
+
+.locationOption h4 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.floatingBox input {
+  color: black;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 1rem auto;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: block;
+  width: 93.64%;
+  text-align: center;
+}
+
+.floatingBoxButtonBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.actionBtn {
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 1.75rem;
+  font-weight: 700;
+  border: 0rem solid purple;
+  border-radius: 1rem;
+  margin: 0.7rem 1.4rem;
+  padding: 0.7rem 4rem;
+  -webkit-box-shadow: 0rem 0.3rem 0.5rem black;
+          box-shadow: 0rem 0.3rem 0.5rem black;
+  width: 100%;
+}
+
+.actionBtn:focus,
+.actionBtn:hover {
+  -webkit-animation: focusHighlighter 2s linear 0s infinite;
+          animation: focusHighlighter 2s linear 0s infinite;
+}
+
+@-webkit-keyframes focusHighlighter {
+  0% {
+    font-size: 1.75rem;
+    letter-spacing: 0px;
+  }
+  50% {
+    font-size: 1.77rem;
+    letter-spacing: 2.5px;
+  }
+  100% {
+    font-size: 1.75rem;
+    letter-spacing: 0px;
+  }
+}
+
+@keyframes focusHighlighter {
+  0% {
+    font-size: 1.75rem;
+    letter-spacing: 0px;
+  }
+  50% {
+    font-size: 1.77rem;
+    letter-spacing: 2.5px;
+  }
+  100% {
+    font-size: 1.75rem;
+    letter-spacing: 0px;
+  }
+}
+
+.cancelBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: transparent;
+}
+
+.cancelBtn svg {
+  height: 3rem;
+  width: 3rem;
+}
+
+.tabContent {
+  padding: 0.5rem;
+  overflow: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.tabContent::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  border: 1px solid black;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background: rgba(150, 150, 150, 0.2);
+}
+
+.timeNDate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.timeDiv, .dateDiv {
+  min-width: 16rem;
+  margin: 0.2rem 0rem;
+  text-align: center;
+}
+
+.timeSpan, .dateSpan {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0.5rem 0.1rem;
+}
+
+.colon {
+  font-size: 2rem;  
+}
+
+.notification {
+  display: none;
+}
+
+.notificationMessage {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0 0 0 1rem;
+  padding: 0.5rem 0.5rem;
+}
+.basicTempDetailsTile,
+.basicIconDetailsTile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 1rem;
+}
+.basicIconDetailsTile {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.currentTempDetails, .dayTempDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 0rem 0.25rem;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  
+}
+
+.currentTempbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.crtTempValue {
+  font-size: 6rem;
+  font-weight: 700;
+}
+
+.ctunit {
+  margin: 1rem 0rem;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.dayTempDetails span {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.weatherIconTile,
+.windIconTile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weatherIcon,
+.windIcon {
+  height: 7rem;
+}
+
+.weatherIconDesc, 
+.windIconDesc span {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.addDetails {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto auto;
+  grid-template-columns: auto auto auto auto;
+  padding: 0.5rem 0rem 0rem 0rem;
+  overflow: auto;
+}
+
+.tmwaddDetails {
+  -ms-grid-columns: auto auto auto;
+  grid-template-columns: auto auto auto;
+}
+
+.addDetailsTile {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.adtfield {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.adtvalue {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.hourlyWeather,
+.f-hourlyDetails {
+  overflow-x: auto;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.hourlyWeather::-webkit-scrollbar,
+.f-hourlyDetails::-webkit-scrollbar {
+  display: none;
+}
+
+table {
+  background-color: transparent;
+  overflow-x: auto;
+  text-align: center;
+}
+
+th {
+  position: sticky;
+  left: 0;
+}
+
+.hourlyWeatherDataColumn {
+  padding: 0.25rem 0.5rem 0.5rem;
+  min-width: 11rem;
+}
+
+.hourlyTemperatureGraph {
+  height: 250px;
+  width: 2676px;
+}
+
+.hourlyTemperatureValue,
+.tmwHourlyTemperatureValue {
+  fill: black;
+  font-family: Times, serif;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* .hourlyTemperaturePoints {
+  fill: url("#tempGraphBackground-summer");
+  fill: url("#tempGraphBackground-winter");
+} */
+
+.hourlyWeatherIcon {
+  width: 5rem;
+}
+
+.hourlyWeatherDescription,
+.hourlyWeatherTime,
+.hourlyWeatherTimeValue,
+.hourlyWeatherFlTemp,
+.hourlyWeatherCloudCover, 
+.hourlyWeatherPrecipPercen, 
+.hourlyWeatherPrecipVolume, 
+.hourlyWeatherWindDesc {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.hourlyWeatherTableHeading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-bottom: 0.3rem double black;
+}
+
+.hourlyWeatherWindIcon {
+  height: 5rem;
+}
+
+.sunriseNset,
+.dayLengthInfo,
+.nightLengthInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.sunriseNsetField,
+.sunriseNsetValue,
+.dayLengthInfoField,
+.dayLengthInfoValue,
+.nightLengthInfoField,
+.nightLengthInfoValue {
+  -webkit-box-flex: 50%;
+      -ms-flex: 50%;
+          flex: 50%;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.sunriseNsetField p,
+.dayLengthInfoField p,
+.nightLengthInfoField p {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.sunriseNsetValue span,
+.dayLengthInfoValue span,
+.nightLengthInfoValue span {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.progressBarContainer-H {
+  background: transparent;
+  max-width: 666px;
+  margin: 1rem auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  height: 17rem;
+  padding: 0.5rem 0;
+  display: none;
+}
+
+.marker {
+  background: rgba(2, 2, 2, 0.9);
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  overflow: visible;
+}
+
+.marker > span {
+  margin: 0rem 0.5rem;
+  text-wrap: nowrap;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.markerEnd > span {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+.markerSunrise > span,
+.markerNoon > span,
+.markerSunset > span {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.markerStart,
+.markerEnd {
+  width: 0.15rem;
+  height: 75%;
+}
+
+.markerSunrise,
+.markerNoon,
+.markerSunset {
+  width: 0rem;
+  height: 42%;
+}
+
+.progressBar {
+  width: 80%;
+  height: 20px;
+  background: -webkit-gradient(
+    linear,
+    left top, right top,
+    from(#494580), 
+    color-stop(17%, #3F329A), 
+    color-stop(20%, #616CFA), 
+    color-stop(21%, #7B92E8), 
+    color-stop(23%, #DF80D4), 
+    color-stop(26%, #F1CFA0), 
+    color-stop(30%, #C9FFFF), 
+    color-stop(66%, #C9FFFF), 
+    color-stop(71%, #FAD415), 
+    color-stop(74%, #E77245), 
+    color-stop(75%, #BF8999), 
+    color-stop(78%, #494580), 
+    to(#494580)
+    );
+  background: -o-linear-gradient(
+    left,
+    #494580 0%, 
+    #3F329A 17%, 
+    #616CFA 20%, 
+    #7B92E8 21%, 
+    #DF80D4 23%, 
+    #F1CFA0 26%, 
+    #C9FFFF 30%, 
+    #C9FFFF 66%, 
+    #FAD415 71%, 
+    #E77245 74%, 
+    #BF8999 75%, 
+    #494580 78%, 
+    #494580 100%
+    );
+  background: linear-gradient(
+    90deg,
+    #494580 0%, 
+    #3F329A 17%, 
+    #616CFA 20%, 
+    #7B92E8 21%, 
+    #DF80D4 23%, 
+    #F1CFA0 26%, 
+    #C9FFFF 30%, 
+    #C9FFFF 66%, 
+    #FAD415 71%, 
+    #E77245 74%, 
+    #BF8999 75%, 
+    #494580 78%, 
+    #494580 100%
+    );
+  position: absolute;
+  top: 45%;
+  z-index: 0;
+  border-radius: 10px;
+  -webkit-box-shadow: 0rem 0.2rem 0.5rem 0.2rem rgba(0, 0, 0, 0.3), 0rem -0.2rem 0.5rem 0.2rem rgba(0, 0, 0, 0.3);
+          box-shadow: 0rem 0.2rem 0.5rem 0.2rem rgba(0, 0, 0, 0.3), 0rem -0.2rem 0.5rem 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.progressIndicator {
+  height: 100%;
+  width: 0%;
+  background: rgba(255, 255, 255, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  -webkit-filter: blur(0.05rem);
+          filter: blur(0.05rem);
+  border-radius: 10px;
+  position: relative;
+  /* animation: progressIndicatorTempProg 10s ease-in-out 0s infinite both; */
+}
+
+/* @keyframes progressIndicatorTempProg {
+  0% {width: 0%;}
+  100% {width: 100%;}
+} */
+
+/* .progressTime {
+  display: inline-block;
+} */
+
+.progressTime,
+  .progressPercent {
+  position: absolute;
+  display: inline-block;
+  background-color: rgba(24, 24, 24, 0.6);
+  color: #ffffff;
+  min-width: 11rem; /* 10rem */
+  padding: 0.5rem 1rem;
+  text-wrap: nowrap;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-radius: 20px;
+  right: -3.5rem;
+  -webkit-animation: progressIndicatorBlinker 2s ease-in-out 0s infinite both;
+          animation: progressIndicatorBlinker 2s ease-in-out 0s infinite both;
+}
+
+.progressTime span,
+.progressPercent span{
+  text-wrap: nowrap;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.progressTime {
+  top: -400%;
+}
+
+.progressTime::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 66%;
+  margin-left: -4px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 65px solid rgba(24, 24, 24, 0.6);
+  display: inline-block;
+  /* animation: progressIndicatorBlinker 2s linear 0s infinite both; */
+}
+
+.progressPercent {
+  bottom: -380%;
+}
+
+.progressPercent::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 66%;
+  margin-left: -4px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 60px solid rgba(24, 24, 24, 0.6);
+  display: inline-block;
+  /* animation: progressIndicatorBlinker 2s linear 0s infinite both; */
+}
+
+.progressBarContainer-C {
+  background: transparent;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 2rem auto;
+  display: none;
+}
+
+.progressBarCir {
+  height: 240px;
+  width: 240px;
+  background: conic-gradient(
+  #494580 0%, 
+  #3F329A 17%, 
+  #616CFA 20%, 
+  #7B92E8 21%, 
+  #DF80D4 23%, 
+  #F1CFA0 26%, 
+  #C9FFFF 30%, 
+  #C9FFFF 66%, 
+  #FAD415 71%, 
+  #E77245 74%, 
+  #BF8999 75%, 
+  #494580 78%, 
+  #494580 100%
+  );
+  border-radius: 50%;
+  -webkit-box-shadow: 0.2rem 0.2rem 0.5rem 0.2rem rgba(0, 0, 0, 0.3), -0.2rem -0.2rem 0.5rem 0.2rem rgba(0, 0, 0, 0.3);
+          box-shadow: 0.2rem 0.2rem 0.5rem 0.2rem rgba(0, 0, 0, 0.3), -0.2rem -0.2rem 0.5rem 0.2rem rgba(0, 0, 0, 0.3);
+}
+
+.progressIndicatorCir {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 240px;
+  width: 240px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.progressIndicatorCirSvg {
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+@-webkit-keyframes progressIndicatorCirTempProg {
+  0% {stroke-dashoffset: 288%;}
+  100% {stroke-dashoffset: 0%;}
+}
+
+@keyframes progressIndicatorCirTempProg {
+  0% {stroke-dashoffset: 288%;}
+  100% {stroke-dashoffset: 0%;}
+}
+
+.progressIndicatorCirSvgBar {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.6);
+  stroke-width: 20px;
+  stroke-dasharray: 288%;
+  stroke-dashoffset: 144%;/*288*/
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  -webkit-filter: blur(0.05rem);
+          filter: blur(0.05rem);
+  /* animation: progressIndicatorCirTempProg 24s ease-in-out 0s infinite both; */
+}
+
+.progressData {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 200px;
+  width: 200px;
+  background: rgba(2, 2, 2, 0.9);
+  border-radius: 50%;
+}
+
+.progressTimeCir,
+.progressPercentCir {
+  display: inline;
+  padding: 0.5rem;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.progressTimeCir span,
+.progressPercentCir span {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* .hourlyTemperatureGraphTmw polygon {
+  fill: url("#tempGraphBackgroundTmw-summer");
+  fill: url("#tempGraphBackgroundTmw-winter");
+} */
+
+.maxTempTmw span,
+.minTempTmw span {
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+
+.f-basicDetails {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 70% 15% 15%;
+  grid-template-columns: 70% 15% 15%;
+  padding: 5px;
+  border-radius: 1rem;
+}
+
+.f-basicDetails:hover {
+  background: rgba(255, 190, 190, 0.3);
+}
+
+.f-dateNDesc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.f-dayNDate {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.fWeatherDesc {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.f-w-iconBox {
+  text-align: center;
+}
+
+.fWeatherIcon {
+  width: 5rem;
+}
+
+.f-tempDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
+  padding: 0rem 0.5rem 0rem 0rem;
+}
+
+.f-tempDetails span {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.f-collapse,
+.s-collapse {
+  display: none;
+}
+
+.f-addDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 25px 5px 5px;
+}
+
+.f-adField p {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.f-adValue {
+  margin-left: 25%;
+}
+
+.f-adValue p {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.f-hourlyDetails {
+  overflow-x: auto;
+  padding: 5px;
+}
+
+.fHourlyTemp {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.fHourlyWeatherIcon {
+  width: 5rem;
+}
+
+.fHourlyTime {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.s-optionDetail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 5px;
+  border-radius: 1rem;
+}
+
+.s-optionDetail:hover {
+  background: rgba(255, 102, 255, 0.3);
+}
+
+.s-collapse {
+  margin: 0.5rem 0 0 0;
+}
+
+.s-collapseToggleIcon {
+  height: 2rem;
+  width: 2rem;
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  -o-transition-property: transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-duration: 0.1s;
+       -o-transition-duration: 0.1s;
+          transition-duration: 0.1s;
+}
+
+.s-cTI-toggle {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.s-option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+}
+
+.s-option:hover {
+  background-color: rgba(255, 255, 255, 0.3)!important;
+}
+
+.s-option svg {
+  height: 2.2rem;
+  width: 2.2rem;
+}
+
+#deleteUserData {
+  background-color: rgba(255, 2, 2, 0.5);
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  word-spacing: 0.2rem;
+  padding: 5px;
+}
+
+/* .footer img {
+  height: 2.4rem;
+  width: 2.4rem;
+  margin: 0rem 1rem;
+} */
+
+.loadingPage {
+  width: 100%;
+  height: 98%;
+  background: rgba(0, 0, 0, 0.25);
+  -webkit-backdrop-filter: blur(.5rem);
+          backdrop-filter: blur(.5rem);
+  position: absolute;
+  top: 0;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 9;
+}
+
+.loaderAnimation {
+  width: 25%;
+  height: 24%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+  grid-template-columns: auto auto auto;
+}
+
+.circle {
+  margin: auto;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 50%;
+  background: rgba(244, 47, 37, 0.9);
+  position: relative;
+  -webkit-animation: loaderAnim .55s ease-out infinite alternate;
+          animation: loaderAnim .55s ease-out infinite alternate;
+}
+
+@-webkit-keyframes loaderAnim {
+  0% {
+    top: 84%;
+    border-radius: 6rem 6rem 2rem 2rem;
+    height: 1rem;
+    -webkit-transform: scaleX(1.5);
+            transform: scaleX(1.5);
+  }
+  20% {
+    border-radius: 50%;
+    height: 2.4rem;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+@keyframes loaderAnim {
+  0% {
+    top: 84%;
+    border-radius: 6rem 6rem 2rem 2rem;
+    height: 1rem;
+    -webkit-transform: scaleX(1.5);
+            transform: scaleX(1.5);
+  }
+  20% {
+    border-radius: 50%;
+    height: 2.4rem;
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+  100% {
+    top: 0%;
+  }
+}
+
+.circle:nth-child(1) {
+  background: rgba(244, 47, 37, 0.7);
+}
+.circle:nth-child(2) {
+  background: rgba(244, 151, 37, 0.7);
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.circle:nth-child(3) {
+  background: rgba(37, 95, 244, 0.7);
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.shadow {
+  margin: auto;
+  width: 2.4rem;
+  height: 1.2rem;
+  border-radius: 50%;
+  background: rgba(2, 2, 2, 0.6);
+  -webkit-filter: blur(0.15rem);
+          filter: blur(0.15rem);
+  -webkit-animation: loaderShadowAnim .55s ease infinite alternate;
+          animation: loaderShadowAnim .55s ease infinite alternate;
+}
+
+@-webkit-keyframes loaderShadowAnim {
+  0% {
+    -webkit-transform: scaleX(1.5);
+            transform: scaleX(1.5);
+  }
+  20% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 0.7;
+  }
+  100% {
+    -webkit-transform: scaleX(0.4);
+            transform: scaleX(0.4);
+    height: 0.9rem;
+    opacity: 0.5;
+  }
+}
+
+@keyframes loaderShadowAnim {
+  0% {
+    -webkit-transform: scaleX(1.5);
+            transform: scaleX(1.5);
+  }
+  20% {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+    opacity: 0.7;
+  }
+  100% {
+    -webkit-transform: scaleX(0.4);
+            transform: scaleX(0.4);
+    height: 0.9rem;
+    opacity: 0.5;
+  }
+}
+
+.shadow:nth-child(5) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.shadow:nth-child(6) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+.loaderText {
+  width: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  
+}
+.loaderText span {
+  font-size: 3.9rem;
+  font-weight: 700;
+  color: rgba(250, 250, 250, 0.9);
+  -webkit-animation: loaderTextAnim 1.1s ease infinite normal;
+          animation: loaderTextAnim 1.1s ease infinite normal;
+}
+
+.loaderText span:nth-child(1) {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+.loaderText span:nth-child(2) {
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+}
+.loaderText span:nth-child(3) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.loaderText span:nth-child(4) {
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
+}
+.loaderText span:nth-child(5) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.loaderText span:nth-child(6) {
+  -webkit-animation-delay: 0.35s;
+          animation-delay: 0.35s;
+}
+.loaderText span:nth-child(7) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+
+@-webkit-keyframes loaderTextAnim {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+@keyframes loaderTextAnim {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0.1;
+  }
+}
+
+/* Switch classes starts here */
+.active {
+  display: block;
+}
+.blink {
+  visibility: hidden;
+}
+.dim {
+  -webkit-filter: blur(0.15rem);
+          filter: blur(0.15rem);
+}
+/* Switch classes ends here */
+
+/* ========================
+Responsiveness Management section
+======================== */
+@media screen and (min-width: 280px) {
+  section {
+    height: 92.6%;
+  }
+  .tabContent {
+    height: 78.5vh; /* 79.4vh */
+  }
+  .tabHeader {
+    -ms-grid-columns: 64% auto auto;
+    grid-template-columns: 64% auto auto;
+  }
+  .floatingBox {
+    top: 8rem;
+  }
+  .timeNDate {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .weatherIconDesc, 
+  .windIconDesc,
+  .windIconDesc span {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+  .remainDayNNightLen {
+    display: none;
+  }
+  .settingsTabHeader {
+    -ms-grid-columns: 77% auto;
+    grid-template-columns: 77% auto;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  /* body {
+    padding: 5rem 1.5rem;
+  } */
+  header, main {
+    width: 70%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  header {
+    height: 6.5vh;
+    border-radius: 1rem 1rem 0 0;
+    margin: 1rem auto 0;
+  }
+  main {
+    height: 90vh;
+  }
+  main, nav {
+    border-radius: 0 0 1rem 1rem;
+  }
+  section {
+    height: 94.8%;
+  }
+  .tabContent {
+    height: 80vh;
+  }
+  .floatingBox {
+    top: 20rem;
+  }
+  .timeNDate {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .weatherIcon,
+  .windIcon {
+    height: 9rem;
+  }
+  .weatherIconDesc, 
+  .windIconDesc,
+  .windIconDesc span {
+    margin: 0.5rem 0 0 0;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+  .sunriseNset,
+  .dayLengthInfo,
+  .nightLengthInfo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    /* justify-content: space-between; */
+  }
+  .sunriseNsetField,
+  .sunriseNsetValue,
+  .dayLengthInfoField,
+  .dayLengthInfoValue,
+  .nightLengthInfoField,
+  .nightLengthInfoValue {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* flex: 100%; */
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .remainDayNNightLen {
+    display: block;
+  }
+  .f-tempDetails {
+    padding: 0rem 1.5rem 0rem 0rem;
+  }
+  .f-addDetails {
+    padding: 5px 100px 5px 5px;
+  }
+}
+
+/* @media screen and (min-width: 766px) {
+  .tabContent {
+    height: 71.5vh;
+  }
+} */
+
+@media screen and (min-width: 992px) {
+  /* body {
+    padding: 2rem 1.5rem;
+  } */
+  main {
+    height: 90vh;
+  }
+  .floatingBox {
+    top: 15rem;
+  }
+  .tabContent {
+    height: 77vh;
+  }
+}
+
+/* ========================
+Animation Management section
+======================== */
+nav > a:hover {
+  cursor: pointer;
+}
+
+nav > a:active {
+  -webkit-transform: translateY(4px);
+      -ms-transform: translateY(4px);
+          transform: translateY(4px);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active,
+.locationBox > a:active {
+  -webkit-transform: translateY(2px);
+      -ms-transform: translateY(2px);
+          transform: translateY(2px);
+  -webkit-transition: -webkit-transform 0.1s;
+  transition: -webkit-transform 0.1s;
+  -o-transition: transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
+}
+
+@-webkit-keyframes progressIndicatorBlinker {
+  0% {opacity: 0;}
+  25% {opacity: 0.5;}
+  50% {opacity: 1;}
+  75% {opacity: 0.5;}
+  100% {opacity: 0;}
+}
+
+@keyframes progressIndicatorBlinker {
+  0% {opacity: 0;}
+  25% {opacity: 0.5;}
+  50% {opacity: 1;}
+  75% {opacity: 0.5;}
+  100% {opacity: 0;}
+}
+
+/* ========================
+Simple Weather App CSS Code ends here.
+======================== */
