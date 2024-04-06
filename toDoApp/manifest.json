@@ -25,7 +25,7 @@
       "name": "Create New Task",
       "short_name": "New Task",
       "description": "Create New Task",
-      "url": "/toDo?source=pwa",
+      "url": "/todoapp/todoapp#toDo",
       "icons": [{ "src": "toDo.png", "sizes": "192x192" }]
     },
     {
