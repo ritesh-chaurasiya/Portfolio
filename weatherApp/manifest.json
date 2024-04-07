@@ -18,7 +18,7 @@
   "background_color" : "rgba(140, 255, 102, 0.2)",
   "orientation" : "portrait",
   "display" : "standalone",
-  "scope" : "https://ritesh-chaurasiya.netlify.app",
+  "scope" : "https://ritesh-chaurasiya.netlify.app/weatherApp/",
   "theme_color" : "rgba(140, 255, 102, 0.2)",
   "shortcuts" : [
     {

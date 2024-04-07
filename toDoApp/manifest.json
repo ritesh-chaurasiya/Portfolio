@@ -18,8 +18,8 @@
   "background_color" : "rgb(144, 238, 144)",
   "orientation" : "portrait",
   "display" : "standalone",
-  "scope" : "https://ritesh-chaurasiya.netlify.app",
-  "theme_color" : "rgb(144, 238, 144)",
+  "scope" : "https://ritesh-chaurasiya.netlify.app/todoapp/",
+  "theme_color" : "rgb(153, 255, 0)",
   "shortcuts" : [
     {
       "name": "Create New Task",
